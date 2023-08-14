@@ -6,10 +6,10 @@ class SplashScreenController extends GetxController {
   static SplashScreenController get find => Get.find();
   RxBool animate = false.obs;
   Future startanimation() async {
-    await Future.delayed(Duration(milliseconds: 500));
+    await Future.delayed(const Duration(milliseconds: 500));
     animate.value = true;
-    await Future.delayed(Duration(milliseconds: 2000));
-    Get.to(() => onBoardingScreen());
+    await Future.delayed(const Duration(milliseconds: 1000));
+    Get.to(() => const OnboardingScreen());
     // Navigator.pushReplacement(
     //     context,
     //     MaterialPageRoute(
