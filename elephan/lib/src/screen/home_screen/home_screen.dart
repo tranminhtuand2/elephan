@@ -1,5 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sliding_clipped_nav_bar/sliding_clipped_nav_bar.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -26,39 +27,59 @@ class _HomeScreenState extends State<HomeScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: SlidingClippedNavBar(
-        backgroundColor: Colors.white,
-        onButtonPressed: (index) {
-          setState(() {
-            selectedIndex = index;
-          });
-          controller.animateToPage(selectedIndex,
+      bottomNavigationBar: Container(
+        decoration: const BoxDecoration(
+            // color: Colors.white,
+            // boxShadow: [
+            //   BoxShadow(
+            //     blurRadius: 20,
+            //     color: Colors.black.withOpacity(.1),
+            //   )
+            // ],
+            ),
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8),
+            child: GNav(
+              rippleColor: Colors.grey[300]!,
+              hoverColor: Colors.grey[100]!,
+              gap: 8,
+              activeColor: Colors.black,
+              iconSize: 24,
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
               duration: const Duration(milliseconds: 400),
-              curve: Curves.easeOutQuad);
-        },
-        iconSize: 30,
-        activeColor: const Color(0xFF01579B),
-        selectedIndex: selectedIndex,
-        barItems: [
-          BarItem(
-            icon: Icons.event,
-            title: 'Events',
+              tabBackgroundColor: Colors.grey[100]!,
+              color: Colors.black,
+              onTabChange: (value) {
+                setState(() {
+                  selectedIndex = value;
+                });
+                controller.animateToPage(selectedIndex,
+                    duration: const Duration(milliseconds: 400),
+                    curve: Curves.easeOutQuad);
+              },
+              tabs: const [
+                GButton(
+                  icon: CupertinoIcons.house_alt,
+                  text: 'Nhà',
+                ),
+                GButton(
+                  icon: CupertinoIcons.search,
+                  text: 'Tìm kiếm',
+                ),
+                GButton(
+                  icon: CupertinoIcons.layers,
+                  text: 'Cửa hàng',
+                ),
+                GButton(
+                  icon: CupertinoIcons.person,
+                  text: 'Tôi',
+                ),
+              ],
+              selectedIndex: selectedIndex,
+            ),
           ),
-          BarItem(
-            icon: Icons.event,
-            title: 'Events',
-          ),
-          BarItem(
-            icon: Icons.event,
-            title: 'Events',
-          ),
-          BarItem(
-            icon: Icons.search_rounded,
-            title: 'Search',
-          ),
-
-          /// Add more BarItem if you want
-        ],
+        ),
       ),
     );
   }
