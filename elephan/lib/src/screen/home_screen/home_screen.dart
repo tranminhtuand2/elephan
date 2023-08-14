@@ -45,12 +45,12 @@ class _HomeScreenState extends State<HomeScreen> {
               rippleColor: Colors.grey[300]!,
               hoverColor: Colors.grey[100]!,
               gap: 8,
-              activeColor: Colors.black,
+              activeColor: Theme.of(context).colorScheme.background,
               iconSize: 24,
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
               duration: const Duration(milliseconds: 400),
-              tabBackgroundColor: Colors.grey[100]!,
-              color: Colors.black,
+              tabBackgroundColor: Theme.of(context).colorScheme.onBackground,
+              color: Theme.of(context).colorScheme.onBackground,
               onTabChange: (value) {
                 setState(() {
                   selectedIndex = value;
