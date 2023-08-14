@@ -1,4 +1,5 @@
 import 'package:elephan/src/constants/size.dart';
+import 'package:elephan/src/screen/pagegioithieu/onboarding_screen/onboarding_screen.dart';
 import 'package:elephan/src/screen/pagegioithieu/splashScreen/splashscreen.dart';
 import 'package:elephan/src/utils/theme/texttheme.dart';
 import 'package:elephan/src/utils/theme/themecolor.dart';
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
           textTheme: TAppTextTheme.darkTextTheme),
       ////test giao diện xong chú ý trả về giao diện  SplashScreen()
       // home: SplashScreen(),
-      home: SplashScreen(),
+      home: onBoardingScreen(),
     );
   }
 }
