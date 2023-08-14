@@ -18,7 +18,7 @@ class pagetest extends StatelessWidget {
           SizedBox(
             child: TextButton(
                 onPressed: () {
-                  Get.to(() => onBoardingScreen());
+                  // Get.to(() => onBoardingScreen());
                 },
                 child: Text("onboarding")),
           ),
