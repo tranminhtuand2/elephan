@@ -1,26 +1,11 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: ForgotPassword(),
-    );
-  }
-}
-
 class ForgotPassword extends StatefulWidget {
   const ForgotPassword({super.key});
 
   @override
   // ignore: library_private_types_in_public_api
-  _ForgotPasswordState createState() =>
-      _ForgotPasswordState();
+  _ForgotPasswordState createState() => _ForgotPasswordState();
 }
 
 class _ForgotPasswordState extends State<ForgotPassword> {
@@ -31,12 +16,12 @@ class _ForgotPasswordState extends State<ForgotPassword> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-         title: const Text(
+        title: const Text(
           'Quên mật khẩu',
           style: TextStyle(
             fontWeight: FontWeight.bold,
           ),
-          ),
+        ),
       ),
       body: Form(
         key: _formKey,
@@ -50,7 +35,8 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     padding: EdgeInsets.symmetric(horizontal: 10),
                     child: Text(
                       'Điền số',
-                      style: TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
                     ),
                   ),
                 ],
@@ -58,15 +44,16 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               const Row(
                 children: [
                   Padding(
-                     padding: EdgeInsets.symmetric(horizontal: 10),
+                    padding: EdgeInsets.symmetric(horizontal: 10),
                     child: Text(
                       'điện thoại!',
-                      style: TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
                     ),
                   ),
                 ],
               ),
-             Padding(
+              Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: Container(
                   padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
@@ -92,36 +79,36 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                         borderRadius: BorderRadius.all(Radius.circular(10)),
                         borderSide: BorderSide(color: Colors.grey),
                       ),
-                      focusedBorder: OutlineInputBorder( 
+                      focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(10)),
-                        borderSide: BorderSide(color: Colors.blue), 
+                        borderSide: BorderSide(color: Colors.blue),
                       ),
                       labelStyle: TextStyle(fontSize: 12),
                     ),
                   ),
                 ),
               ),
-               const SizedBox(height: 20),
+              const SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 40),
                 child: ElevatedButton(
                   onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ForgotPasswordOTPPage(
-                          phoneNumber: _controllerPhone.text,
+                    if (_formKey.currentState!.validate()) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ForgotPasswordOTPPage(
+                            phoneNumber: _controllerPhone.text,
+                          ),
                         ),
-                      ),
-                    );
-                  }
-                },
+                      );
+                    }
+                  },
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.blue,
+                    backgroundColor: Colors.blue,
                     minimumSize: const Size(double.infinity, 45),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10), 
+                      borderRadius: BorderRadius.circular(10),
                     ),
                   ),
                   child: const Text(
@@ -153,18 +140,19 @@ class ForgotPasswordOTPPage extends StatefulWidget {
 
 class _ForgotPasswordOTPState extends State<ForgotPasswordOTPPage> {
   final _formKey = GlobalKey<FormState>();
-   final List<TextEditingController> _otpControllers = List.generate(6, (index) => TextEditingController());
+  final List<TextEditingController> _otpControllers =
+      List.generate(6, (index) => TextEditingController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-         title: const Text(
+        title: const Text(
           'Quên mật khẩu',
           style: TextStyle(
             fontWeight: FontWeight.bold,
           ),
-          ),
+        ),
       ),
       body: Form(
         key: _formKey,
@@ -178,38 +166,38 @@ class _ForgotPasswordOTPState extends State<ForgotPasswordOTPPage> {
                     padding: EdgeInsets.symmetric(horizontal: 10),
                     child: Text(
                       'Điền vào OTP',
-                      style: TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
-                    ),           
-                  ),    
+                      style:
+                          TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
+                    ),
+                  ),
                 ],
               ),
-             const SizedBox(height: 20),
+              const SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: _buildOTPInputs(),
               ),
               const SizedBox(height: 20),
-                Padding(
+              Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 40),
                 child: ElevatedButton(
                   onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ResetPasswordPage(
-                          phoneNumber: widget.phoneNumber,
+                    if (_formKey.currentState!.validate()) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ResetPasswordPage(
+                            phoneNumber: widget.phoneNumber,
+                          ),
                         ),
-                      ),
-                    );
-                  }
-                },
+                      );
+                    }
+                  },
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.blue,
+                    backgroundColor: Colors.blue,
                     minimumSize: const Size(double.infinity, 45),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10), 
+                      borderRadius: BorderRadius.circular(10),
                     ),
                   ),
                   child: const Text(
@@ -227,6 +215,7 @@ class _ForgotPasswordOTPState extends State<ForgotPasswordOTPPage> {
       ),
     );
   }
+
   final List<FocusNode> _focusNodes = List.generate(6, (index) => FocusNode());
 
   List<Widget> _buildOTPInputs() {
@@ -246,7 +235,9 @@ class _ForgotPasswordOTPState extends State<ForgotPasswordOTPPage> {
             height: 50,
             decoration: BoxDecoration(
               border: Border.all(
-                color: _otpControllers[i].text.isNotEmpty ? Colors.blue : Colors.grey,
+                color: _otpControllers[i].text.isNotEmpty
+                    ? Colors.blue
+                    : Colors.grey,
                 width: 2,
               ),
               borderRadius: BorderRadius.circular(10),
@@ -293,13 +284,13 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       appBar: AppBar(
-         title: const Text(
+      appBar: AppBar(
+        title: const Text(
           'Quên mật khẩu',
           style: TextStyle(
             fontWeight: FontWeight.bold,
           ),
-          ),
+        ),
       ),
       body: Form(
         key: _formKey,
@@ -313,9 +304,10 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                     padding: EdgeInsets.symmetric(horizontal: 10),
                     child: Text(
                       'Điền mật khẩu',
-                      style: TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
-                    ),           
-                  ),    
+                      style:
+                          TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
+                    ),
+                  ),
                 ],
               ),
               const Row(
@@ -324,108 +316,109 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                     padding: EdgeInsets.symmetric(horizontal: 10),
                     child: Text(
                       'mới của',
-                      style: TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
-                    ),           
-                  ),    
+                      style:
+                          TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
+                    ),
+                  ),
                 ],
-              ), const Row(
+              ),
+              const Row(
                 children: [
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 10),
                     child: Text(
                       'bạn!',
-                      style: TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
-                    ),           
-                  ),    
+                      style:
+                          TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
+                    ),
+                  ),
                 ],
               ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: Container(
-                    padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
-                    child: TextFormField(
-                      controller: _controllerNewPassword,
-                      obscureText: true,
-                      autovalidateMode: AutovalidateMode.onUserInteraction,
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return "Vui lòng điền vào mật khẩu";
-                        }
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: Container(
+                      padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
+                      child: TextFormField(
+                        controller: _controllerNewPassword,
+                        obscureText: true,
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Vui lòng điền vào mật khẩu";
+                          }
 
-                        return null;
-                      },
-                      decoration: const InputDecoration(
-                        hintText: "Nhập mật khẩu mới",
-                        prefixIcon: Icon(Icons.lock),
-                        filled: true,
-                        fillColor: Color.fromARGB(255, 245, 245, 245),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                          borderSide: BorderSide(color: Colors.grey),
+                          return null;
+                        },
+                        decoration: const InputDecoration(
+                          hintText: "Nhập mật khẩu mới",
+                          prefixIcon: Icon(Icons.lock),
+                          filled: true,
+                          fillColor: Color.fromARGB(255, 245, 245, 245),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide: BorderSide(color: Colors.grey),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide: BorderSide(color: Colors.blue),
+                          ),
+                          labelStyle: TextStyle(fontSize: 12),
                         ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                          borderSide: BorderSide(color: Colors.blue),
-                        ),
-                        labelStyle: TextStyle(fontSize: 12),
                       ),
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 10),
-                  child: Container(
-                    padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
-                    child: TextFormField(
-                      controller: _controllerConfirmPassword,
-                      obscureText: true,
-                      autovalidateMode: AutovalidateMode.onUserInteraction,
-                      validator: (value) {
-                        if (value!.isEmpty) {
-                          return "Vui lòng xác nhận mật khẩu mới";
-                        }
-                        if (value != _controllerNewPassword.text) {
-                          return "Mật khẩu xác nhận không khớp";
-                        }
-                        return null;
-                      },
-                      decoration: const InputDecoration(
-                        hintText: "Xác nhận mật khẩu mới",
-                        prefixIcon: Icon(Icons.lock),
-                        filled: true,
-                        fillColor: Color.fromARGB(255, 245, 245, 245),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                          borderSide: BorderSide(color: Colors.grey),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: Container(
+                      padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
+                      child: TextFormField(
+                        controller: _controllerConfirmPassword,
+                        obscureText: true,
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Vui lòng xác nhận mật khẩu mới";
+                          }
+                          if (value != _controllerNewPassword.text) {
+                            return "Mật khẩu xác nhận không khớp";
+                          }
+                          return null;
+                        },
+                        decoration: const InputDecoration(
+                          hintText: "Xác nhận mật khẩu mới",
+                          prefixIcon: Icon(Icons.lock),
+                          filled: true,
+                          fillColor: Color.fromARGB(255, 245, 245, 245),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide: BorderSide(color: Colors.grey),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                            borderSide: BorderSide(color: Colors.blue),
+                          ),
+                          labelStyle: TextStyle(fontSize: 12),
                         ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(10)),
-                          borderSide: BorderSide(color: Colors.blue),
-                        ),
-                        labelStyle: TextStyle(fontSize: 12),
                       ),
                     ),
                   ),
-                ),
-              ],
-            ),
+                ],
+              ),
               const SizedBox(height: 20),
-               Padding(
+              Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 40),
                 child: ElevatedButton(
                   onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      
-                    }
+                    if (_formKey.currentState!.validate()) {}
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.blue,
+                    backgroundColor: Colors.blue,
                     minimumSize: const Size(double.infinity, 45),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10), 
+                      borderRadius: BorderRadius.circular(10),
                     ),
                   ),
                   child: const Text(

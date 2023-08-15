@@ -1,19 +1,5 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: SignUp(),
-    );
-  }
-}
-
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
 
@@ -29,112 +15,115 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'Đăng ký',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-      ),
-      body: Form(
-        key: _formKey,
-        child: Center(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              const Row(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10),
-                    child: Text(
-                      'Điền vào',
-                      style:
-                          TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                ],
-              ),
-              const Row(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 10),
-                    child: Text(
-                      'số điện thoại!',
-                      style:
-                          TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: Container(
-                  padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
-                  child: TextFormField(
-                    controller: _controllerPhone,
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
-                    keyboardType: TextInputType.phone,
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return "Vui lòng điền vào số điện thoại";
-                      }
-                      if (!RegExp(r"^(0|\\+84)[0-9]{9}$").hasMatch(value)) {
-                        return "Số điện thoại sai định dạng";
-                      }
-                      return null;
-                    },
-                    decoration: const InputDecoration(
-                      hintText: "Nhập vào số điện thoại",
-                      prefixIcon: Icon(Icons.phone),
-                      filled: true,
-                      fillColor: Color.fromARGB(255, 245, 245, 245),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                        borderSide: BorderSide(color: Colors.grey),
+      // appBar: AppBar(
+      //   title: const Text(
+      //     'Đăng ký',
+      //     style: TextStyle(
+      //       fontWeight: FontWeight.bold,
+      //     ),
+      //   ),
+      // ),
+      body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
+        child: Form(
+          key: _formKey,
+          child: Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                const Row(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      child: Text(
+                        'Điền vào',
+                        style: TextStyle(
+                            fontSize: 45, fontWeight: FontWeight.bold),
                       ),
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                        borderSide: BorderSide(color: Colors.blue),
-                      ),
-                      labelStyle: TextStyle(fontSize: 12),
                     ),
-                  ),
+                  ],
                 ),
-              ),
-              const SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 40),
-                child: ElevatedButton(
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => SignUpPasswordPage(
-                            phoneNumber: _controllerPhone.text,
-                          ),
+                const Row(
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      child: Text(
+                        'số điện thoại!',
+                        style: TextStyle(
+                            fontSize: 45, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Container(
+                    padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
+                    child: TextFormField(
+                      controller: _controllerPhone,
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      keyboardType: TextInputType.phone,
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return "Vui lòng điền vào số điện thoại";
+                        }
+                        if (!RegExp(r"^(0|\\+84)[0-9]{9}$").hasMatch(value)) {
+                          return "Số điện thoại sai định dạng";
+                        }
+                        return null;
+                      },
+                      decoration: const InputDecoration(
+                        hintText: "Nhập vào số điện thoại",
+                        prefixIcon: Icon(Icons.phone),
+                        filled: true,
+                        fillColor: Color.fromARGB(255, 245, 245, 245),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                          borderSide: BorderSide(color: Colors.grey),
                         ),
-                      );
-                    }
-                  },
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.blue,
-                    minimumSize: const Size(double.infinity, 45),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                  ),
-                  child: const Text(
-                    'Tiếp',
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Colors.white,
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(10)),
+                          borderSide: BorderSide(color: Colors.blue),
+                        ),
+                        labelStyle: TextStyle(fontSize: 12),
+                      ),
                     ),
                   ),
                 ),
-              ),
-            ],
+                const SizedBox(height: 20),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 40),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => SignUpPasswordPage(
+                              phoneNumber: _controllerPhone.text,
+                            ),
+                          ),
+                        );
+                      }
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      minimumSize: const Size(double.infinity, 45),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                    ),
+                    child: const Text(
+                      'Tiếp',
+                      style: TextStyle(
+                        fontSize: 18,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -283,7 +272,7 @@ class _SignUpPasswordPageState extends State<SignUpPasswordPage> {
                     }
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.blue,
+                    backgroundColor: Colors.blue,
                     minimumSize: const Size(double.infinity, 45),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
@@ -310,7 +299,8 @@ class SignUpNamePage extends StatefulWidget {
   final String phoneNumber;
   final String password;
 
-  const SignUpNamePage({super.key, required this.phoneNumber, required this.password});
+  const SignUpNamePage(
+      {super.key, required this.phoneNumber, required this.password});
 
   @override
   // ignore: library_private_types_in_public_api
@@ -363,88 +353,90 @@ class _SignUpNamePageState extends State<SignUpNamePage> {
                   ),
                 ],
               ),
-             Row(
-              children: [
-                Expanded(
-                  flex: 2, 
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(10, 0, 5, 0),
-                    child: Container(
-                      padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
-                      child: TextFormField(
-                        controller: _controllerFirstName,
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return "Vui lòng điền vào họ";
-                          }
-                          return null;
-                        },
-                        decoration: const InputDecoration(
-                          hintText: "Họ",
-                          filled: true,
-                          fillColor: Color.fromARGB(255, 245, 245, 245),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            borderSide: BorderSide(color: Colors.grey),
+              Row(
+                children: [
+                  Expanded(
+                    flex: 2,
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(10, 0, 5, 0),
+                      child: Container(
+                        padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
+                        child: TextFormField(
+                          controller: _controllerFirstName,
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return "Vui lòng điền vào họ";
+                            }
+                            return null;
+                          },
+                          decoration: const InputDecoration(
+                            hintText: "Họ",
+                            filled: true,
+                            fillColor: Color.fromARGB(255, 245, 245, 245),
+                            border: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
+                              borderSide: BorderSide(color: Colors.grey),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
+                              borderSide: BorderSide(color: Colors.blue),
+                            ),
+                            labelStyle: TextStyle(fontSize: 12),
                           ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            borderSide: BorderSide(color: Colors.blue),
-                          ),
-                          labelStyle: TextStyle(fontSize: 12),
                         ),
                       ),
                     ),
                   ),
-                ),
-                const SizedBox(width: 10),
-                Expanded(
-                  flex: 4, 
-                  child: Padding(
-                    padding: const EdgeInsets.fromLTRB(5, 0, 10, 0),
-                    child: Container(
-                      padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
-                      child: TextFormField(
-                        controller: _controllerLastName,
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return "Vui lòng điền vào tên";
-                          }
-                          return null;
-                        },
-                        decoration: const InputDecoration(
-                          hintText: "Tên",
-                          filled: true,
-                          fillColor: Color.fromARGB(255, 245, 245, 245),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            borderSide: BorderSide(color: Colors.grey),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    flex: 4,
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(5, 0, 10, 0),
+                      child: Container(
+                        padding: const EdgeInsets.fromLTRB(0, 20, 0, 20),
+                        child: TextFormField(
+                          controller: _controllerLastName,
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          validator: (value) {
+                            if (value!.isEmpty) {
+                              return "Vui lòng điền vào tên";
+                            }
+                            return null;
+                          },
+                          decoration: const InputDecoration(
+                            hintText: "Tên",
+                            filled: true,
+                            fillColor: Color.fromARGB(255, 245, 245, 245),
+                            border: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
+                              borderSide: BorderSide(color: Colors.grey),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(10)),
+                              borderSide: BorderSide(color: Colors.blue),
+                            ),
+                            labelStyle: TextStyle(fontSize: 12),
                           ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                            borderSide: BorderSide(color: Colors.blue),
-                          ),
-                          labelStyle: TextStyle(fontSize: 12),
                         ),
                       ),
                     ),
                   ),
-                ),
-              ],
-            ),
+                ],
+              ),
               const SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 40),
                 child: ElevatedButton(
                   onPressed: () {
-                    if (_formKey.currentState!.validate()) {
-
-                    }
+                    if (_formKey.currentState!.validate()) {}
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.blue,
+                    backgroundColor: Colors.blue,
                     minimumSize: const Size(double.infinity, 45),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),

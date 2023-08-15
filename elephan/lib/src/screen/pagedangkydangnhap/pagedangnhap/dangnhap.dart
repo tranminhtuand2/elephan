@@ -1,20 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:elephan/src/screen/home_screen/home_screen.dart';
 import 'package:elephan/src/screen/pagedangkydangnhap/pagequenmatkhau/quenmatkhau.dart';
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Login(),
-    );
-  }
-}
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -27,30 +13,30 @@ class _LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
   final _controllerPhone = TextEditingController();
 
-Future<void> _navigateToPasswordLogin() async {
-  await Navigator.push(
-    context,
-    PageRouteBuilder(
-      pageBuilder: (context, animation, secondaryAnimation) {
-        return _PasswordLogin();
-      },
-      transitionsBuilder: (context, animation, secondaryAnimation, child) {
-        const begin = Offset(1.0, 0.0); 
-        const end = Offset.zero;
-        const curve = Curves.easeOut;
-  
-        var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
-        var offsetAnimation = animation.drive(tween);
+  Future<void> _navigateToPasswordLogin() async {
+    await Navigator.push(
+      context,
+      PageRouteBuilder(
+        pageBuilder: (context, animation, secondaryAnimation) {
+          return _PasswordLogin();
+        },
+        transitionsBuilder: (context, animation, secondaryAnimation, child) {
+          const begin = Offset(1.0, 0.0);
+          const end = Offset.zero;
+          const curve = Curves.easeOut;
 
-        return SlideTransition(
-          position: offsetAnimation,
-          child: child,
-        );
-      },
-    ),
-  );
-}
+          var tween =
+              Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+          var offsetAnimation = animation.drive(tween);
 
+          return SlideTransition(
+            position: offsetAnimation,
+            child: child,
+          );
+        },
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +54,8 @@ Future<void> _navigateToPasswordLogin() async {
                     padding: EdgeInsets.symmetric(horizontal: 10),
                     child: Text(
                       'Điền số',
-                      style: TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
                     ),
                   ),
                 ],
@@ -79,7 +66,8 @@ Future<void> _navigateToPasswordLogin() async {
                     padding: EdgeInsets.symmetric(horizontal: 10),
                     child: Text(
                       'điện thoại!',
-                      style: TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
                     ),
                   ),
                 ],
@@ -129,7 +117,7 @@ Future<void> _navigateToPasswordLogin() async {
                     }
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.blue,
+                    backgroundColor: Colors.blue,
                     minimumSize: const Size(double.infinity, 45),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
@@ -179,7 +167,8 @@ class _PasswordLogin extends StatelessWidget {
                     padding: EdgeInsets.symmetric(horizontal: 10),
                     child: Text(
                       'Điền mật khẩu',
-                      style: TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
                     ),
                   ),
                 ],
@@ -190,7 +179,8 @@ class _PasswordLogin extends StatelessWidget {
                     padding: EdgeInsets.symmetric(horizontal: 10),
                     child: Text(
                       'của bạn!',
-                      style: TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
                     ),
                   ),
                 ],
@@ -241,7 +231,7 @@ class _PasswordLogin extends StatelessWidget {
                     );
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.blue,
+                    backgroundColor: Colors.blue,
                     minimumSize: const Size(double.infinity, 45),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
