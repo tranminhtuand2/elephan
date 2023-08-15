@@ -78,7 +78,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 dotsCount: getPages().length,
                 position: currentIndexPage,
                 decorator: DotsDecorator(
-                  activeColor: Colors.black,
+                  activeColor: Theme.of(context).colorScheme.onBackground,
                   size: const Size.square(9.0),
                   activeSize: const Size(18.0, 9.0),
                   activeShape: RoundedRectangleBorder(
@@ -102,19 +102,26 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       context,
                       MaterialPageRoute<void>(
                           builder: (BuildContext context) =>
-                              const HomeScreen()),
+                              const HomeScreen(),),
                       ModalRoute.withName('/home'),
                     );
                   }
                 },
                 style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.black,
+                    backgroundColor:
+                        Theme.of(context).colorScheme.surfaceVariant,
                     padding: const EdgeInsets.symmetric(vertical: 20),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(14))),
                 child: currentIndexPage < getPages().length - 1
-                    ? Text('Tiếp theo'.toUpperCase())
-                    : Text('Bắt đầu'.toUpperCase()),
+                    ? Text(
+                        'Tiếp theo'.toUpperCase(),
+                        style: Theme.of(context).textTheme.labelMedium,
+                      )
+                    : Text(
+                        'Bắt đầu'.toUpperCase(),
+                        style: Theme.of(context).textTheme.labelMedium,
+                      ),
               ),
             ),
           ],
