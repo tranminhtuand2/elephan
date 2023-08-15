@@ -1,5 +1,4 @@
 import 'package:elephan/src/constants/size.dart';
-import 'package:elephan/src/screen/home_screen/home_screen.dart';
 import 'package:elephan/src/screen/pagegioithieu/splashScreen/splashscreen.dart';
 import 'package:elephan/src/utils/theme/texttheme.dart';
 import 'package:elephan/src/utils/theme/themecolor.dart';

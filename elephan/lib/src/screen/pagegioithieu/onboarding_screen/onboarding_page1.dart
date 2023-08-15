@@ -16,7 +16,7 @@ class OnboardingPage1 extends StatelessWidget {
             Lottie.asset('assets/images/image_onboarding1.json',
                 height: SizeConfig.screenHeight * 0.3),
             SizedBox(height: getProportionateScreenHeight(20)),
-            Text(
+            const Text(
               TOnBoardingTitle1,
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 38, fontWeight: FontWeight.bold),

@@ -1,3 +1,4 @@
+import 'package:elephan/src/screen/home_screen/page_home/page_home.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
@@ -20,7 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
           physics: const NeverScrollableScrollPhysics(),
           controller: controller,
           children: const [
-            Text('Page 1'),
+            PageHome(),
             Text('Page 2'),
             Text('Page 3'),
             Text('Page 4'),
@@ -42,6 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 8),
             child: GNav(
+              selectedIndex: selectedIndex,
               rippleColor: Colors.grey[300]!,
               hoverColor: Colors.grey[100]!,
               gap: 8,
@@ -77,7 +79,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   text: 'Tôi',
                 ),
               ],
-              selectedIndex: selectedIndex,
             ),
           ),
         ),
