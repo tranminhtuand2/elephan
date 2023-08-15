@@ -108,19 +108,28 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   }
                 },
                 style: ElevatedButton.styleFrom(
-                    backgroundColor:
-                        Theme.of(context).colorScheme.surfaceVariant,
+                    backgroundColor: Theme.of(context).colorScheme.onBackground,
                     padding: const EdgeInsets.symmetric(vertical: 20),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(14))),
                 child: currentIndexPage < getPages().length - 1
                     ? Text(
                         'Tiếp theo'.toUpperCase(),
-                        style: Theme.of(context).textTheme.labelMedium,
+                        style: Theme.of(context)
+                            .textTheme
+                            .labelMedium
+                            ?.copyWith(
+                                color:
+                                    Theme.of(context).colorScheme.onBackground),
                       )
                     : Text(
                         'Bắt đầu'.toUpperCase(),
-                        style: Theme.of(context).textTheme.labelMedium,
+                        style: Theme.of(context)
+                            .textTheme
+                            .labelMedium
+                            ?.copyWith(
+                                color:
+                                    Theme.of(context).colorScheme.onBackground),
                       ),
               ),
             ),

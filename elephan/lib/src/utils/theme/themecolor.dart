@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class TAppTheme {
   static const lightColorScheme = ColorScheme(
     brightness: Brightness.light,
-    primary: Color.fromARGB(167, 129, 141, 124),
+    primary: Color.fromARGB(255, 255, 255, 255),
     onPrimary: Color(0xFFFFFFFF),
     primaryContainer: Color(0xFFEADDFF),
     onPrimaryContainer: Color(0xFF21005D),
@@ -21,7 +21,7 @@ class TAppTheme {
     onErrorContainer: Color(0xFF410E0B),
     outline: Color(0xFF79747E),
     background: Color(0xFFFFFBFE),
-    onBackground: Color(0xFF1C1B1F),
+    onBackground: Color.fromARGB(255, 0, 0, 0),
     surface: Color(0xFFFFFBFE),
     onSurface: Color(0xFF1C1B1F),
     surfaceVariant: Color(0xFFE7E0EC),
@@ -36,8 +36,8 @@ class TAppTheme {
   );
   static const darkColorScheme = ColorScheme(
     brightness: Brightness.dark,
-    primary: Color.fromARGB(255, 63, 55, 58),
-    onPrimary: Color(0xFF381E72),
+    primary: Color.fromARGB(255, 0, 0, 0),
+    onPrimary: Color.fromARGB(255, 0, 0, 0),
     primaryContainer: Color(0xFF4F378B),
     onPrimaryContainer: Color(0xFFEADDFF),
     secondary: Color(0xFFCCC2DC),
@@ -54,7 +54,7 @@ class TAppTheme {
     onErrorContainer: Color(0xFFF9DEDC),
     outline: Color(0xFF938F99),
     background: Color(0xFF1C1B1F),
-    onBackground: Color(0xFFE6E1E5),
+    onBackground: Color.fromARGB(255, 255, 255, 255),
     surface: Color(0xFF1C1B1F),
     onSurface: Color(0xFFE6E1E5),
     surfaceVariant: Color(0xFF49454F),
