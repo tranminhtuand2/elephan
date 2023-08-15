@@ -101,8 +101,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     Navigator.pushAndRemoveUntil<void>(
                       context,
                       MaterialPageRoute<void>(
-                          builder: (BuildContext context) =>
-                              const HomeScreen(),),
+                        builder: (BuildContext context) => const HomeScreen(),
+                      ),
                       ModalRoute.withName('/home'),
                     );
                   }
