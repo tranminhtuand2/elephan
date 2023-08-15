@@ -41,7 +41,7 @@ class TAppTheme {
     primaryContainer: Color(0xFF4F378B),
     onPrimaryContainer: Color(0xFFEADDFF),
     secondary: Color(0xFFCCC2DC),
-    onSecondary: Color(0xFF332D41),
+    onSecondary: Color.fromARGB(255, 0, 0, 0),
     secondaryContainer: Color(0xFF4A4458),
     onSecondaryContainer: Color(0xFFE8DEF8),
     tertiary: Color(0xFFEFB8C8),

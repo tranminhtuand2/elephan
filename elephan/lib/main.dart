@@ -1,4 +1,5 @@
 import 'package:elephan/src/constants/size.dart';
+import 'package:elephan/src/screen/pagedangkydangnhap/pagedangky/dangky.dart';
 import 'package:elephan/src/screen/pagegioithieu/splashScreen/splashscreen.dart';
 import 'package:elephan/src/screen/pagedangkydangnhap/pagedangnhap/dangnhap.dart';
 import 'package:elephan/src/utils/theme/texttheme.dart';

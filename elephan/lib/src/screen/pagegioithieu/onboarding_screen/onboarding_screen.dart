@@ -101,8 +101,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     Navigator.pushAndRemoveUntil<void>(
                       context,
                       MaterialPageRoute<void>(
-                          builder: (BuildContext context) =>
-                              const HomeScreen(),),
+                        builder: (BuildContext context) => const HomeScreen(),
+                      ),
                       ModalRoute.withName('/home'),
                     );
                   }
@@ -115,21 +115,13 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 child: currentIndexPage < getPages().length - 1
                     ? Text(
                         'Tiếp theo'.toUpperCase(),
-                        style: Theme.of(context)
-                            .textTheme
-                            .labelMedium
-                            ?.copyWith(
-                                color:
-                                    Theme.of(context).colorScheme.onBackground),
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                            color: Theme.of(context).colorScheme.onSecondary),
                       )
                     : Text(
                         'Bắt đầu'.toUpperCase(),
-                        style: Theme.of(context)
-                            .textTheme
-                            .labelMedium
-                            ?.copyWith(
-                                color:
-                                    Theme.of(context).colorScheme.onBackground),
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                            color: Theme.of(context).colorScheme.onSecondary),
                       ),
               ),
             ),
