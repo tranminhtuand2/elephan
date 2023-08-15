@@ -25,7 +25,7 @@ class pagetest extends StatelessWidget {
           SizedBox(
             child: TextButton(
                 onPressed: () {
-                  Get.to(() => Page_dangnhap());
+                  Get.to(() => Login());
                 },
                 child: Text("trangdk.dn")),
           ),
