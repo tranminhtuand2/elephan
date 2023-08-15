@@ -7,11 +7,11 @@ const String TOnBoardingTitle1 = "Tiện lợi\nVà\nNhanh chóng.";
 const String TOnBoardingTitle2 = "Dễ dàng quản lí.";
 const String TOnBoardingTitle3 = "Tiết kiệm chi phí";
 
-const String TOnBoardingSubTitle1 =
+const String TOnBoardingSubTitle3 =
     "Giúp người dùng mua sắm dễ dàng và nhanh chóng ngay tại ngón tay.";
 const String TOnBoardingSubTitle2 =
     "Tích hợp các tính năng quản lý tiện lợi như theo dõi đơn hàng, lưu trữ thông tin thanh toán";
-const String TOnBoardingSubTitle3 =
+const String TOnBoardingSubTitle1 =
     "Giúp người dùng mua sắm dễ dàng và nhanh chóng ngay tại ngón tay.";
 
 const String TOnBoardingCounter1 = "1/3";
