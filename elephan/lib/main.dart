@@ -1,5 +1,6 @@
 import 'package:elephan/src/constants/size.dart';
 import 'package:elephan/src/screen/pagegioithieu/splashScreen/splashscreen.dart';
+import 'package:elephan/src/screen/pagedangkydangnhap/pagedangnhap/dangnhap.dart';
 import 'package:elephan/src/utils/theme/texttheme.dart';
 import 'package:elephan/src/utils/theme/themecolor.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +34,8 @@ class MyApp extends StatelessWidget {
           colorScheme: TAppTheme.darkColorScheme,
           textTheme: TAppTextTheme.darkTextTheme),
       ////test giao diện xong chú ý trả về giao diện  SplashScreen()
-       home: SplashScreen(),
+      //  home: const Login(),
+      home: SplashScreen(),
     );
   }
 }
