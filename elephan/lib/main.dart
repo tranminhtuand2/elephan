@@ -36,15 +36,8 @@ class MyApp extends StatelessWidget {
           colorScheme: TAppTheme.darkColorScheme,
           textTheme: TAppTextTheme.darkTextTheme),
       ////test giao diện xong chú ý trả về giao diện  SplashScreen()
-<<<<<<< HEAD
-       home: SplashScreen(),
-      //home: const HomeScreen(),
-       // home: const Login(), // Trang đăng nhập ở đây
-      // home: const SignUp(),
-=======
-      home: SplashScreen(),
-      
->>>>>>> e828ebecdb696b1edf5b70f32e19db7d61d88258
+       // home: SplashScreen(),
+      home: const SignUp(),
     );
   }
 }
