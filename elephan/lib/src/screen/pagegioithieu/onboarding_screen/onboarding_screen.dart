@@ -102,7 +102,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       context,
                       MaterialPageRoute<void>(
                           builder: (BuildContext context) =>
-                              const HomeScreen()),
+                              const HomeScreen(),),
                       ModalRoute.withName('/home'),
                     );
                   }
