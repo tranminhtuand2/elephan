@@ -1,19 +1,5 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: ForgotPassword(),
-    );
-  }
-}
-
 class ForgotPassword extends StatefulWidget {
   const ForgotPassword({super.key});
 
@@ -119,7 +105,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                     }
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.blue,
+                    backgroundColor: Colors.blue,
                     minimumSize: const Size(double.infinity, 45),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
@@ -208,7 +194,7 @@ class _ForgotPasswordOTPState extends State<ForgotPasswordOTPPage> {
                     }
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.blue,
+                    backgroundColor: Colors.blue,
                     minimumSize: const Size(double.infinity, 45),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
@@ -429,7 +415,7 @@ class _ResetPasswordPageState extends State<ResetPasswordPage> {
                     if (_formKey.currentState!.validate()) {}
                   },
                   style: ElevatedButton.styleFrom(
-                    primary: Colors.blue,
+                    backgroundColor: Colors.blue,
                     minimumSize: const Size(double.infinity, 45),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
