@@ -1,17 +1,18 @@
 import 'package:elephan/src/constants/size.dart';
 import 'package:elephan/src/screen/home_screen/home_screen.dart';
-import 'package:elephan/src/screen/pagedangkydangnhap/pagedangky/dangky.dart';
-import 'package:elephan/src/screen/pagegioithieu/splashScreen/splashscreen.dart';
-import 'package:elephan/src/screen/pagedangkydangnhap/pagedangnhap/dangnhap.dart';
 import 'package:elephan/src/utils/theme/texttheme.dart';
 import 'package:elephan/src/utils/theme/themecolor.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 // import 'package:flutter_native_splash/flutter_native_splash.dart';
 
-void main() {
-  runApp(const MyApp());
+Future main() async {
+  await dotenv.load(fileName: ".env");
+  runApp(
+    const MyApp(),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
           colorScheme: TAppTheme.darkColorScheme,
           textTheme: TAppTextTheme.darkTextTheme),
       ////test giao diện xong chú ý trả về giao diện  SplashScreen()
-      // home: SplashScreen(),
+      // home: const SignUp(),
       home: const HomeScreen(),
     );
   }

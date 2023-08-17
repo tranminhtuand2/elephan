@@ -4,23 +4,28 @@ class btnSubmit extends StatelessWidget {
   const btnSubmit({
     super.key,
     required this.onTap,
-    required this.title,
+    required this.backgroundColor,
+    required this.height,
+    required this.text,
   });
 
   final Function onTap;
-  final String title;
+
+  final Color backgroundColor;
+  final double height;
+  final Text text;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 54,
+      height: height,
       margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 30),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.black,
+          backgroundColor: backgroundColor,
           shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(5)),
+            borderRadius: BorderRadius.all(Radius.circular(16)),
           ),
         ),
         onPressed: () async {
@@ -30,12 +35,7 @@ class btnSubmit extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(title,
-                style: const TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                )),
+            text,
           ],
         ),
       ),

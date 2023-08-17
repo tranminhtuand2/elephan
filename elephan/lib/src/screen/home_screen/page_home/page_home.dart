@@ -8,6 +8,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
+import '../../../constants/shared_preferences.dart';
+import '../../../models/category.dart';
+import '../../../models/user.dart';
+
 class PageHome extends StatefulWidget {
   const PageHome({super.key});
 
@@ -17,6 +21,20 @@ class PageHome extends StatefulWidget {
 
 class _PageHomeState extends State<PageHome> {
   final _controllerSearch = TextEditingController();
+
+  User? user;
+  void getUser() async {
+    final sharedPrefs = await SharedPreferencesService.getInstance();
+    user = User.fromJson(sharedPrefs.getUser());
+    log(user!.phone.toString());
+  }
+
+  @override
+  void initState() {
+    getUser();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,22 +75,81 @@ class _PageHomeState extends State<PageHome> {
             ),
           ),
           SliverToBoxAdapter(
-            child: Column(
-              children: [
-                Container(
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 14),
-                  child: TabBar(),
-                ),
-                ListView.builder(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: 50,
-                  itemBuilder: (context, index) {
-                    return Text('FoodTab $index');
-                  },
-                ),
-              ],
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Column(
+                children: [
+                  Container(
+                    margin: const EdgeInsets.symmetric(
+                        horizontal: 10, vertical: 14),
+                    child: TabBar(),
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: const Color.fromARGB(255, 255, 251, 238),
+                    ),
+                    child: listViewCategory(
+                      danhmuc: [
+                        DanhMuc(
+                            idDanhmuc: 1,
+                            tenDanhmuc: "Cơm",
+                            urlImage:
+                                'https://cdn-icons-png.flaticon.com/128/2694/2694993.png',
+                            status: true),
+                        DanhMuc(
+                            idDanhmuc: 1,
+                            tenDanhmuc: "Nước uống",
+                            urlImage:
+                                'https://cdn-icons-png.flaticon.com/128/8606/8606876.png',
+                            status: true),
+                        DanhMuc(
+                            idDanhmuc: 1,
+                            tenDanhmuc: "Bánh ngọt",
+                            urlImage:
+                                'https://cdn-icons-png.flaticon.com/128/621/621647.png',
+                            status: true),
+                        DanhMuc(
+                            idDanhmuc: 1,
+                            tenDanhmuc: "Bánh ngọt",
+                            urlImage:
+                                'https://cdn-icons-png.flaticon.com/128/621/621647.png',
+                            status: true),
+                        DanhMuc(
+                            idDanhmuc: 1,
+                            tenDanhmuc: "Bánh ngọt",
+                            urlImage:
+                                'https://cdn-icons-png.flaticon.com/128/621/621647.png',
+                            status: true),
+                        DanhMuc(
+                            idDanhmuc: 1,
+                            tenDanhmuc: "Cơm",
+                            urlImage:
+                                'https://cdn-icons-png.flaticon.com/128/2694/2694993.png',
+                            status: true),
+                        DanhMuc(
+                            idDanhmuc: 1,
+                            tenDanhmuc: "Bánh ngọt",
+                            urlImage:
+                                'https://cdn-icons-png.flaticon.com/128/621/621647.png',
+                            status: true),
+                        DanhMuc(
+                            idDanhmuc: 1,
+                            tenDanhmuc: "Cơm",
+                            urlImage:
+                                'https://cdn-icons-png.flaticon.com/128/2694/2694993.png',
+                            status: true),
+                        DanhMuc(
+                            idDanhmuc: 1,
+                            tenDanhmuc: "Bánh ngọt",
+                            urlImage:
+                                'https://cdn-icons-png.flaticon.com/128/621/621647.png',
+                            status: true),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ],
@@ -180,6 +257,52 @@ class _PageHomeState extends State<PageHome> {
           ),
         )
       ],
+    );
+  }
+}
+
+class listViewCategory extends StatelessWidget {
+  const listViewCategory({
+    super.key,
+    required this.danhmuc,
+  });
+
+  final List<DanhMuc> danhmuc;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(20),
+      child: GridView.builder(
+        shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
+        gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+          maxCrossAxisExtent: 80,
+          mainAxisExtent: 100,
+          childAspectRatio: 1,
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 10,
+        ),
+        itemCount: danhmuc.length,
+        itemBuilder: (context, index) {
+          return InkWell(
+            onTap: () {},
+            child: Column(
+              children: [
+                CircleAvatar(
+                  backgroundColor: Colors.blue.withOpacity(0.1),
+                  radius: 22,
+                  child: Image.network(danhmuc[index].urlImage!),
+                ),
+                Text(
+                  danhmuc[index].tenDanhmuc!,
+                  style: Theme.of(context).textTheme.labelMedium,
+                ),
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 }
