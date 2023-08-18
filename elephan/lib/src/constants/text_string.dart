@@ -1,6 +1,6 @@
-const String TAppName = "Elephan";
+const String TAppName = "Elephan Food";
 
-const String TAppTagLine = "phiên bản ver beta:1.0.0";
+const String TAppTagLine = "ver: 1.0.1 beta";
 
 //ON BOARDING TEST
 const String TOnBoardingTitle1 = "Tiện lợi\nVà\nNhanh chóng.";
