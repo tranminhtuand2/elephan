@@ -6,10 +6,12 @@ import 'package:lottie/lottie.dart';
 import '../../../constants/text_string.dart';
 
 class SplashScreen extends StatelessWidget {
-  const SplashScreen({super.key});
+  SplashScreen({super.key});
+  final splashController = Get.put(SplashScreenController());
 
   @override
   Widget build(BuildContext context) {
+    splashController.startanimation();
     return SafeArea(
       child: Scaffold(
         body: SingleChildScrollView(
