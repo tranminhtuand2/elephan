@@ -12,6 +12,7 @@ class OnboardingPage3 extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             SizedBox(height: getProportionateScreenHeight(80)),
             Lottie.asset('assets/images/image_onboarding3.json',
