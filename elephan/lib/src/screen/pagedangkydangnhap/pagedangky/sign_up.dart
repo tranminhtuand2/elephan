@@ -93,25 +93,25 @@ class _SignUpState extends State<SignUp> {
                         Theme.of(context).colorScheme.primaryContainer,
                     onTap: () async {
                       if (_formKey.currentState!.validate()) {
-                        // var checkPhone = await SignUpService.checkPhoneNumber(
-                        //     _controllerPhone.text);
+                        var checkPhone = await SignUpService.checkPhoneNumber(
+                            _controllerPhone.text);
 
-                        // if (checkPhone) {
-                        //   Get.to(
-                        //     SignUpPasswordPage(
-                        //       phoneNumber: _controllerPhone.text,
-                        //     ),
-                        //   );
-                        // } else {
-                        //   Get.to(PasswordLogin(
-                        //     phone: _controllerPhone.text,
-                        //   ));
-                        // }
-                        Get.to(
-                          SignUpPasswordPage(
-                            phoneNumber: _controllerPhone.text,
-                          ),
-                        );
+                        if (checkPhone) {
+                          Get.to(
+                            SignUpPasswordPage(
+                              phoneNumber: _controllerPhone.text,
+                            ),
+                          );
+                        } else {
+                          Get.to(PasswordLogin(
+                            phone: _controllerPhone.text,
+                          ));
+                        }
+                        // Get.to(
+                        //   SignUpPasswordPage(
+                        //     phoneNumber: _controllerPhone.text,
+                        //   ),
+                        // );
                       }
                     },
                     text: Text(

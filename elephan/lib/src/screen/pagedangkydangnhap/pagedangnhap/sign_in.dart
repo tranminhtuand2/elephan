@@ -149,6 +149,7 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                 ),
+                //trang đăng ký
                 TextButton(
                     onPressed: () {
                       Get.to(() => const SignUp());
@@ -226,20 +227,30 @@ class _PasswordLoginState extends State<PasswordLogin> {
                       },
                       decoration: InputDecoration(
                         hintText: "Nhập mật khẩu",
+                        labelText: "nhập mật khẩu",
+                        labelStyle: TextStyle(
+                          color: Theme.of(context)
+                              .colorScheme
+                              .onBackground, // Màu sắc của tiêu đề
+                          fontSize: 16, // Cỡ chữ của tiêu đề
+                          fontWeight:
+                              FontWeight.bold, // Trọng lượng chữ của tiêu đề
+                        ),
                         prefixIcon: Icon(Icons.lock),
                         filled: true,
                         fillColor: Theme.of(context).colorScheme.background,
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(16)),
                           borderSide: BorderSide(
-                              color: Color.fromARGB(255, 221, 221, 221)),
+                            color: Theme.of(context).colorScheme.onBackground,
+                          ),
                         ),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(16)),
                           borderSide: BorderSide(
-                              color: Color.fromARGB(255, 228, 228, 228)),
+                            color: Theme.of(context).colorScheme.onBackground,
+                          ),
                         ),
-                        labelStyle: TextStyle(fontSize: 12),
                       ),
                     ),
                   ),

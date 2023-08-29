@@ -70,20 +70,32 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       }
                       return null;
                     },
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
+                      labelText: "nhập số điện thoại",
                       hintText: "Nhập vào số điện thoại",
                       prefixIcon: Icon(Icons.phone),
                       filled: true,
-                      fillColor: Color.fromARGB(255, 245, 245, 245),
+                      labelStyle: TextStyle(
+                        color: Theme.of(context)
+                            .colorScheme
+                            .onBackground, // Màu sắc của tiêu đề
+                        fontSize: 13, // Cỡ chữ của tiêu đề
+                        fontWeight:
+                            FontWeight.bold, // Trọng lượng chữ của tiêu đề
+                      ),
+                      fillColor: Theme.of(context).colorScheme.background,
                       border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                        borderSide: BorderSide(color: Colors.grey),
+                        borderRadius: BorderRadius.all(Radius.circular(16)),
+                        borderSide: BorderSide(
+                          color: Theme.of(context).colorScheme.onBackground,
+                        ),
                       ),
                       focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                        borderSide: BorderSide(color: Colors.blue),
+                        borderRadius: BorderRadius.all(Radius.circular(16)),
+                        borderSide: BorderSide(
+                          color: Theme.of(context).colorScheme.onBackground,
+                        ),
                       ),
-                      labelStyle: TextStyle(fontSize: 12),
                     ),
                   ),
                 ),
@@ -200,11 +212,11 @@ class _ForgotPasswordOTPState extends State<ForgotPasswordOTPPage> {
                       borderRadius: BorderRadius.circular(10),
                     ),
                   ),
-                  child: const Text(
+                  child: Text(
                     'Tiếp',
                     style: TextStyle(
                       fontSize: 18,
-                      color: Colors.white,
+                      color: Theme.of(context).colorScheme.onBackground,
                     ),
                   ),
                 ),
