@@ -29,18 +29,13 @@ class _SignUpState extends State<SignUp> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  'Mời nhập',
+                  'Vui lòng nhập \nSố Điện Thoại',
                   style: Theme.of(context)
                       .textTheme
-                      .displayMedium
+                      .displaySmall
                       ?.copyWith(fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 10),
-                Text('số điện thoại!',
-                    style: Theme.of(context)
-                        .textTheme
-                        .displayMedium
-                        ?.copyWith(fontWeight: FontWeight.bold)),
                 Container(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
@@ -60,22 +55,32 @@ class _SignUpState extends State<SignUp> {
                       }
                       return null;
                     },
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
+                      labelText: "SỐ ĐIỆN THOẠI",
+                      labelStyle: TextStyle(
+                        color: Theme.of(context)
+                            .colorScheme
+                            .onBackground, // Màu sắc của tiêu đề
+                        fontSize: 12, // Cỡ chữ của tiêu đề
+                        fontWeight:
+                            FontWeight.bold, // Trọng lượng chữ của tiêu đề
+                      ),
                       hintText: "Nhập vào số điện thoại",
                       prefixIcon: Icon(Icons.phone),
                       filled: true,
-                      fillColor: Color.fromARGB(255, 255, 255, 255),
+                      fillColor: Theme.of(context).colorScheme.background,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(16)),
                         borderSide: BorderSide(
-                            color: Color.fromARGB(255, 221, 221, 221)),
+                          color: Theme.of(context).colorScheme.background,
+                        ),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(16)),
                         borderSide: BorderSide(
-                            color: Color.fromARGB(255, 228, 228, 228)),
+                          color: Theme.of(context).colorScheme.onBackground,
+                        ),
                       ),
-                      labelStyle: TextStyle(fontSize: 12),
                     ),
                   ),
                 ),
@@ -83,31 +88,37 @@ class _SignUpState extends State<SignUp> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: btnSubmit(
-                    height: 60,
-                    backgroundColor: Theme.of(context).colorScheme.onBackground,
+                    height: 50,
+                    backgroundColor:
+                        Theme.of(context).colorScheme.primaryContainer,
                     onTap: () async {
                       if (_formKey.currentState!.validate()) {
-                        var checkPhone = await SignUpService.checkPhoneNumber(
-                            _controllerPhone.text);
+                        // var checkPhone = await SignUpService.checkPhoneNumber(
+                        //     _controllerPhone.text);
 
-                        if (checkPhone) {
-                          Get.to(
-                            SignUpPasswordPage(
-                              phoneNumber: _controllerPhone.text,
-                            ),
-                          );
-                        } else {
-                          Get.to(PasswordLogin(
-                            phone: _controllerPhone.text,
-                          ));
-                        }
+                        // if (checkPhone) {
+                        //   Get.to(
+                        //     SignUpPasswordPage(
+                        //       phoneNumber: _controllerPhone.text,
+                        //     ),
+                        //   );
+                        // } else {
+                        //   Get.to(PasswordLogin(
+                        //     phone: _controllerPhone.text,
+                        //   ));
+                        // }
+                        Get.to(
+                          SignUpPasswordPage(
+                            phoneNumber: _controllerPhone.text,
+                          ),
+                        );
                       }
                     },
-                    text: const Text(
+                    text: Text(
                       'Tiếp',
                       style: TextStyle(
                         fontSize: 18,
-                        color: Colors.white,
+                        color: Theme.of(context).colorScheme.onPrimaryContainer,
                       ),
                     ),
                   ),
@@ -158,7 +169,7 @@ class _SignUpPasswordPageState extends State<SignUpPasswordPage> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: Text(
-                  'Mời nhập',
+                  'Mời nhập \nMật Khẩu',
                   style: Theme.of(context)
                       .textTheme
                       .displayMedium
@@ -166,16 +177,6 @@ class _SignUpPasswordPageState extends State<SignUpPasswordPage> {
                 ),
               ),
               const SizedBox(height: 10),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10),
-                child: Text(
-                  'mật khẩu!',
-                  style: Theme.of(context)
-                      .textTheme
-                      .displayMedium
-                      ?.copyWith(fontWeight: FontWeight.bold),
-                ),
-              ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 10),
                 child: Container(
@@ -190,22 +191,30 @@ class _SignUpPasswordPageState extends State<SignUpPasswordPage> {
                       }
                       return null;
                     },
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
+                      labelText: "Mật Khẩu",
+                      labelStyle: TextStyle(
+                        color: Theme.of(context)
+                            .colorScheme
+                            .onBackground, // Màu sắc của tiêu đề
+                        fontSize: 16, // Cỡ chữ của tiêu đề
+                        fontWeight:
+                            FontWeight.bold, // Trọng lượng chữ của tiêu đề
+                      ),
                       hintText: "Nhập mật khẩu",
                       prefixIcon: Icon(Icons.lock),
                       filled: true,
-                      fillColor: Color.fromARGB(255, 255, 255, 255),
+                      fillColor: Theme.of(context).colorScheme.background,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(16)),
                         borderSide: BorderSide(
-                            color: Color.fromARGB(255, 221, 221, 221)),
+                            color: Theme.of(context).colorScheme.onBackground),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(16)),
                         borderSide: BorderSide(
-                            color: Color.fromARGB(255, 228, 228, 228)),
+                            color: Theme.of(context).colorScheme.onBackground),
                       ),
-                      labelStyle: TextStyle(fontSize: 12),
                     ),
                   ),
                 ),
@@ -227,22 +236,30 @@ class _SignUpPasswordPageState extends State<SignUpPasswordPage> {
                       }
                       return null;
                     },
-                    decoration: const InputDecoration(
+                    decoration: InputDecoration(
                       hintText: "Xác nhận mật khẩu",
                       prefixIcon: Icon(Icons.lock),
                       filled: true,
-                      fillColor: Color.fromARGB(255, 255, 255, 255),
+                      labelText: "xác nhận lại mật khẩu",
+                      labelStyle: TextStyle(
+                        color: Theme.of(context)
+                            .colorScheme
+                            .onBackground, // Màu sắc của tiêu đề
+                        fontSize: 16, // Cỡ chữ của tiêu đề
+                        fontWeight:
+                            FontWeight.bold, // Trọng lượng chữ của tiêu đề
+                      ),
+                      fillColor: Theme.of(context).colorScheme.background,
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(16)),
                         borderSide: BorderSide(
-                            color: Color.fromARGB(255, 221, 221, 221)),
+                            color: Theme.of(context).colorScheme.onBackground),
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(16)),
                         borderSide: BorderSide(
-                            color: Color.fromARGB(255, 228, 228, 228)),
+                            color: Theme.of(context).colorScheme.onBackground),
                       ),
-                      labelStyle: TextStyle(fontSize: 12),
                     ),
                   ),
                 ),
@@ -267,11 +284,11 @@ class _SignUpPasswordPageState extends State<SignUpPasswordPage> {
                       }
                     }
                   },
-                  text: const Text(
+                  text: Text(
                     'Tiếp',
                     style: TextStyle(
                       fontSize: 18,
-                      color: Colors.white,
+                      color: Theme.of(context).colorScheme.background,
                     ),
                   ),
                 ),

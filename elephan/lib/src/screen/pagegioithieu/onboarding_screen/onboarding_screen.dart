@@ -1,10 +1,12 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:elephan/src/screen/home_screen/home_screen.dart';
+import 'package:elephan/src/screen/pagedangkydangnhap/pagedangnhap/sign_in.dart';
 
 import 'package:elephan/src/screen/pagegioithieu/onboarding_screen/onboarding_page1.dart';
 import 'package:elephan/src/screen/pagegioithieu/onboarding_screen/onboarding_page2.dart';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'onboarding_page3.dart';
 
@@ -98,13 +100,15 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                       curve: Curves.easeInOut,
                     );
                   } else {
-                    Navigator.pushAndRemoveUntil<void>(
-                      context,
-                      MaterialPageRoute<void>(
-                        builder: (BuildContext context) => const HomeScreen(),
-                      ),
-                      ModalRoute.withName('/home'),
-                    );
+                    // Navigator.pushAndRemoveUntil<void>(
+                    //   context,
+                    //   MaterialPageRoute<void>(
+                    //     builder: (BuildContext context) => const HomeScreen(),
+                    //   ),
+                    //   ModalRoute.withName('/home'),
+                    // );
+                    //chuyển sang trang đăng nhập
+                    Get.to(() => Login());
                   }
                 },
                 style: ElevatedButton.styleFrom(

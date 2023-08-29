@@ -80,6 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   text: 'Cửa hàng',
                 ),
                 GButton(
+                  //
                   icon: CupertinoIcons.person,
                   text: 'Tôi',
                 ),
