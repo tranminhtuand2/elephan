@@ -1,8 +1,7 @@
 import 'package:elephan/src/constants/size.dart';
-import 'package:elephan/src/screen/home_screen/home_screen.dart';
-import 'package:elephan/src/screen/pagegioithieu/splashScreen/splashscreen.dart';
-import 'package:elephan/src/utils/theme/texttheme.dart';
-import 'package:elephan/src/utils/theme/themecolor.dart';
+import 'package:elephan/src/screen/signin_signup/pagedangnhap/sign_in.dart';
+import 'package:elephan/src/utils/themes/text_theme.dart';
+import 'package:elephan/src/utils/themes/theme_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:get/get.dart';
@@ -37,10 +36,7 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
           colorScheme: TAppTheme.darkColorScheme,
           textTheme: TAppTextTheme.darkTextTheme),
-      ////test giao diện xong chú ý trả về giao diện  SplashScreen()
-      home: SplashScreen(),
-      //ok
-      // home: const HomeScreen(),
+      home: const LoginScreen(),
     );
   }
 }

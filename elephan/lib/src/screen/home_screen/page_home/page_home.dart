@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:elephan/src/getx_controller/product_controller.dart';
 import 'package:elephan/src/screen/home_screen/page_home/tab_screen/drink_tab.dart';
 import 'package:elephan/src/screen/home_screen/page_home/tab_screen/food_tab.dart';
 import 'package:elephan/src/screen/home_screen/page_home/tab_screen/other_tab.dart';
@@ -8,9 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
-import '../../../constants/shared_preferences.dart';
 import '../../../models/category.dart';
-import '../../../models/user.dart';
 
 class PageHome extends StatefulWidget {
   const PageHome({super.key});
@@ -22,16 +21,9 @@ class PageHome extends StatefulWidget {
 class _PageHomeState extends State<PageHome> {
   final _controllerSearch = TextEditingController();
 
-  User? user;
-  void getUser() async {
-    final sharedPrefs = await SharedPreferencesService.getInstance();
-    user = User.fromJson(sharedPrefs.getUser());
-    log(user!.phone.toString());
-  }
-
   @override
   void initState() {
-    getUser();
+    Get.put(ProductController()).fetchProduct();
     super.initState();
   }
 

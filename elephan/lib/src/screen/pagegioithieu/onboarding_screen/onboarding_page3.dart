@@ -14,10 +14,10 @@ class OnboardingPage3 extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            SizedBox(height: getProportionateScreenHeight(80)),
+            SizedBox(height: getProportionateScreenHeight(30)),
             Lottie.asset('assets/images/image_onboarding3.json',
                 width: SizeConfig.screenHeight * 0.3),
-            SizedBox(height: getProportionateScreenHeight(30)),
+            // SizedBox(height: getProportionateScreenHeight(30)),
             const Text(
               TOnBoardingTitle3,
               style: TextStyle(fontSize: 38, fontWeight: FontWeight.bold),

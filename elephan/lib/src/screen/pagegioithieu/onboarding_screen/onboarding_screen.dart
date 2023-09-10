@@ -1,6 +1,6 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:elephan/src/screen/home_screen/home_screen.dart';
-import 'package:elephan/src/screen/pagedangkydangnhap/pagedangnhap/sign_in.dart';
+import 'package:elephan/src/screen/signin_signup/pagedangnhap/sign_in.dart';
 
 import 'package:elephan/src/screen/pagegioithieu/onboarding_screen/onboarding_page1.dart';
 import 'package:elephan/src/screen/pagegioithieu/onboarding_screen/onboarding_page2.dart';
@@ -108,7 +108,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     //   ModalRoute.withName('/home'),
                     // );
                     //chuyển sang trang đăng nhập
-                    Get.to(() => Login());
+                    Get.to(() => LoginScreen());
                   }
                 },
                 style: ElevatedButton.styleFrom(

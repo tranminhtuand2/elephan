@@ -5,9 +5,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
-import '../../constants/shared_preferences.dart';
-import '../../models/user.dart';
-
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 

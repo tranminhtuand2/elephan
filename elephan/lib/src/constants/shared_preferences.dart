@@ -2,6 +2,8 @@ import 'dart:convert';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../models/login_result.dart';
+
 class SharedPreferencesService {
   static SharedPreferencesService? _instance;
   static SharedPreferences? _preferences;
@@ -12,32 +14,26 @@ class SharedPreferencesService {
     return _instance!;
   }
 
-  Future<void> setAccessToken(String accessToken) async {
-    await _preferences!.setString('access_token', accessToken);
+  Future<void> setLoginResult(LoginResult loginResult) async {
+    await _preferences!
+        .setString('LOGIN_RESULT', json.encode(loginResult.toJson()));
   }
 
-  String getAccessToken() {
-    return _preferences!.getString('access_token') ?? '';
-  }
-
-  Future<void> setRefreshToken(String refreshToken) async {
-    await _preferences!.setString('refresh_token', refreshToken);
-  }
-
-  String getRefreshToken() {
-    return _preferences!.getString('refresh_token') ?? '';
-  }
-
-  Future<void> setUser(Map<String, dynamic> userInfo) async {
-    await _preferences!.setString('user_info', json.encode(userInfo));
-  }
-
-  Map<String, dynamic> getUser() {
-    final userInfoString = _preferences!.getString('user_info');
-    if (userInfoString != null && userInfoString.isNotEmpty) {
-      return json.decode(userInfoString);
-    } else {
-      return {};
+  Future<LoginResult?> getLoginResult() async {
+    try {
+      String json = _preferences!.getString('LOGIN_RESULT') ?? "";
+      LoginResult loginResult = LoginResult.fromJson(jsonDecode(json));
+      return loginResult;
+    } catch (e) {
+      return null;
     }
+  }
+
+  Future<void> setIsFirstInstall(bool firstInstall) async {
+    await _preferences!.setBool('check_first_install', firstInstall);
+  }
+
+  bool getIsFirstInstall() {
+    return _preferences!.getBool('check_first_install') ?? false;
   }
 }
