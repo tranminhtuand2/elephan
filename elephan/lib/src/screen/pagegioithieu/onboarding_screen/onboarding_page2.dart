@@ -10,7 +10,7 @@ class OnboardingPage2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      body: SingleChildScrollView(
         child: Column(
           children: [
             SizedBox(height: getProportionateScreenHeight(80)),

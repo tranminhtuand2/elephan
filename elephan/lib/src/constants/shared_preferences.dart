@@ -34,6 +34,6 @@ class SharedPreferencesService {
   }
 
   bool getIsFirstInstall() {
-    return _preferences!.getBool('check_first_install') ?? false;
+    return _preferences!.getBool('check_first_install') ?? true;
   }
 }

@@ -10,11 +10,10 @@ class OnboardingPage3 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
+      body: SingleChildScrollView(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            SizedBox(height: getProportionateScreenHeight(30)),
+            SizedBox(height: getProportionateScreenHeight(130)),
             Lottie.asset('assets/images/image_onboarding3.json',
                 width: SizeConfig.screenHeight * 0.3),
             // SizedBox(height: getProportionateScreenHeight(30)),
@@ -22,7 +21,7 @@ class OnboardingPage3 extends StatelessWidget {
               TOnBoardingTitle3,
               style: TextStyle(fontSize: 38, fontWeight: FontWeight.bold),
             ),
-            const SizedBox(height: 30),
+            const SizedBox(height: 50),
             const Text(
               TOnBoardingSubTitle1,
               textAlign: TextAlign.center,
