@@ -30,8 +30,8 @@ Column appBarTop(
                     style: Theme.of(context).textTheme.titleMedium,
                   ),
                   Text(
-                    // inforUser.info!.email!.split('@')[0],
-                    'asdss',
+                    inforUser.info!.email!.split('@')[0],
+                    // 'asdss',
                     style: Theme.of(context)
                         .textTheme
                         .titleMedium

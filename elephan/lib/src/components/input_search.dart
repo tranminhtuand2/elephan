@@ -3,19 +3,23 @@ import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class inputSearch extends StatefulWidget {
-  const inputSearch({
+class InputSearch extends StatefulWidget {
+  const InputSearch({
     super.key,
     required TextEditingController controllerSearch,
+    this.onTap,
+    this.readOnly = false,
   }) : _controllerSearch = controllerSearch;
 
   final TextEditingController _controllerSearch;
+  final Function()? onTap;
+  final bool readOnly;
 
   @override
-  State<inputSearch> createState() => _inputSearchState();
+  State<InputSearch> createState() => _InputSearchState();
 }
 
-class _inputSearchState extends State<inputSearch> {
+class _InputSearchState extends State<InputSearch> {
   bool isIconClose = false;
 
   @override
@@ -46,6 +50,8 @@ class _inputSearchState extends State<inputSearch> {
       height: 60,
       width: double.infinity,
       child: TextFormField(
+        onTap: widget.onTap,
+        readOnly: widget.readOnly,
         onFieldSubmitted: (value) {
           if (value.isNotEmpty) {
             log(value);

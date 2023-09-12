@@ -30,27 +30,29 @@ class MyApp extends StatelessWidget {
       defaultTransition: Transition.leftToRightWithFade,
       transitionDuration: const Duration(milliseconds: 500),
       theme: ThemeData(
-          fontFamily: GoogleFonts.inter().fontFamily,
+          fontFamily: GoogleFonts.manrope().fontFamily,
           useMaterial3: true,
           colorScheme: TAppTheme.lightColorScheme,
           textTheme: TAppTextTheme.lightTextTheme),
       darkTheme: ThemeData(
-          fontFamily: GoogleFonts.roboto().fontFamily,
+          fontFamily: GoogleFonts.manrope().fontFamily,
           useMaterial3: true,
           colorScheme: TAppTheme.darkColorScheme,
           textTheme: TAppTextTheme.darkTextTheme),
-      home: Stack(
-        children: [
-          SplashScreen(),
-          Builder(builder: (context) {
-            final authController = Get.put(AuthController());
-            return Obx(() {
-              return authController.isLoading.value
-                  ? Loading()
-                  : const SizedBox();
-            });
-          }),
-        ],
+      home: Builder(
+        builder: (context) {
+          final authController = Get.put(AuthController());
+          return Obx(
+            () {
+              return Stack(
+                children: [
+                  SplashScreen(),
+                  authController.isLoading.value ? Loading() : const SizedBox(),
+                ],
+              );
+            },
+          );
+        },
       ),
     );
   }
