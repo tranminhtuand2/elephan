@@ -8,5 +8,6 @@ class Router {
       '${dotenv.env["URL_SERVER"]}/user/auth/activated';
 
   static String login = '${dotenv.env["URL_SERVER"]}/user/auth/login';
+  static String logout = '${dotenv.env["URL_SERVER"]}/user/auth/login';
   static String getProduct = '${dotenv.env["URL_SERVER"]}/user/product/all';
 }

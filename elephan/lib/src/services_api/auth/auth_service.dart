@@ -110,4 +110,22 @@ class AuthService {
       return Failure(response: err.response);
     }
   }
+
+  static Future<dynamic> logOut() async {
+    try {
+      var response = await http.get(
+        Router.logout,
+      );
+      if (response.statusCode == 200) {
+        log('CALL SUCCESS');
+        return Success(response: response, statusCode: response.statusCode);
+      } else if (response.statusCode == 401) {
+        log('CALL FAIL');
+        return Failure(response: response, statusCode: response.statusCode);
+      }
+    } on DioException catch (err) {
+      log("CALL ERROR  $err");
+      return Failure(response: err.response);
+    }
+  }
 }

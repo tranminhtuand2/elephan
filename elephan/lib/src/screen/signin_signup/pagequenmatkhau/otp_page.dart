@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
-import '../../../components/loading.dart';
 import '../../../components/my_button.dart';
 import '../../../getx_controller/auth_controller.dart';
 import '../../../utils/themes/text_theme.dart';
@@ -37,55 +36,48 @@ class _ForgotPasswordOTPState extends State<ForgotPasswordOTPPage> {
               text(context).titleMedium?.copyWith(fontWeight: FontWeight.bold),
         ),
       ),
-      body: Obx(
-        () {
-          if (controller.isLoading.value) {
-            return Loading();
-          }
-          return Form(
-            key: _formKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-                  child: Text(
-                    'Nhập OTP \nnhận được \ntừ email',
-                    style: TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
-                  ),
-                ),
-                const SizedBox(height: 20),
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: enterPin(context),
-                ),
-                const SizedBox(height: 60),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: MyButton(
-                    onTap: () {
-                      if (_formKey.currentState!.validate()) {
-                        controller.activeCodeEmail(
-                          email: widget.valueEmail ?? '',
-                          code: int.parse(numberPin.trim()),
-                        );
-                      }
-                    },
-                    backgroundColor: colorScheme(context).onBackground,
-                    height: 60,
-                    text: Text(
-                      'Tiếp tục',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Theme.of(context).colorScheme.onPrimary,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+      body: Form(
+        key: _formKey,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+              child: Text(
+                'Nhập OTP \nnhận được \ntừ email',
+                style: TextStyle(fontSize: 45, fontWeight: FontWeight.bold),
+              ),
             ),
-          );
-        },
+            const SizedBox(height: 20),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: enterPin(context),
+            ),
+            const SizedBox(height: 60),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: MyButton(
+                onTap: () {
+                  if (_formKey.currentState!.validate()) {
+                    controller.activeCodeEmail(
+                      email: widget.valueEmail ?? '',
+                      code: int.parse(numberPin.trim()),
+                    );
+                  }
+                },
+                backgroundColor: colorScheme(context).onBackground,
+                height: 60,
+                text: Text(
+                  'Tiếp tục',
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: Theme.of(context).colorScheme.onPrimary,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -5,24 +5,24 @@ import 'package:elephan/src/services_api/auth/auth_service.dart';
 import 'package:elephan/src/utils/network/response.dart';
 import 'package:get/get.dart';
 
+import '../components/snack_bar_getx.dart';
 import '../constants/shared_preferences.dart';
 import '../screen/signin_signup/pagedangnhap/sign_in.dart';
 import '../screen/signin_signup/pagequenmatkhau/otp_page.dart';
 
 class AuthController extends GetxController {
   var isLoading = false.obs;
+  var login_result = LoginResult().obs;
 
   Future<void> checkPhoneNumber({required String phone}) async {
     isLoading.value = true;
     var response = await AuthService.checkPhoneNumber(phone);
     if (response is Success) {
-      print(response.response);
-      isLoading.value = false;
-      Get.to(() => SignUpEmailPage(phoneNumber: phone));
-    } else {
-      print(response.response);
       isLoading.value = false;
 
+      Get.to(() => SignUpEmailPage(phoneNumber: phone));
+    } else {
+      isLoading.value = false;
       Get.to(() => PasswordLogin(phone: phone));
     }
   }
@@ -39,15 +39,18 @@ class AuthController extends GetxController {
       password: password,
     );
     if (response is Success) {
-      print(response.response);
+      // print(response.response);
       isLoading.value = false;
       Get.to(() => ForgotPasswordOTPPage(
             valueEmail: email,
           ));
     } else {
-      print(response.response);
+      // print(response.response);
       isLoading.value = false;
-      Get.snackbar('Lỗi', response.response.data["msg"].toString());
+      showCustomSnackBar(
+          type: Type.error,
+          title: 'Có lỗi!',
+          message: response.response.data['msg']);
     }
   }
 
@@ -63,14 +66,14 @@ class AuthController extends GetxController {
       password: password,
     );
     if (response is Success) {
-      print(response.response.data);
+      // print(response.response.data);
       isLoading.value = false;
 
       // Lưu thông tin vào Shared Preferences
       final sharedPrefs = await SharedPreferencesService.getInstance();
       LoginResult loginResult =
           LoginResult.fromMap(response.response.data['data']);
-
+      login_result.value = loginResult;
       await sharedPrefs.setLoginResult(loginResult);
 
       //chuyển sang màn hình home nếu đăng nhập thành công
@@ -79,7 +82,10 @@ class AuthController extends GetxController {
     } else {
       print(response.response);
       isLoading.value = false;
-      Get.snackbar('Lỗi', response.response.data["msg"].toString());
+      showCustomSnackBar(
+          type: Type.error,
+          title: 'Có lỗi!',
+          message: response.response.data['msg']);
     }
   }
 
@@ -95,14 +101,18 @@ class AuthController extends GetxController {
     if (response is Success) {
       print(response.response);
       isLoading.value = false;
-      Get.snackbar('Thành công', 'Đăng ký thành công');
+      showCustomSnackBar(
+          type: Type.success,
+          title: 'Thành công',
+          message: 'Đăng ký thành công');
       Get.offAll(() => PasswordLogin(
             email: email,
           ));
     } else {
       print(response.response);
       isLoading.value = false;
-      Get.snackbar('Lỗi', "Sai OTP, xin thử lại");
+      showCustomSnackBar(
+          type: Type.error, title: 'Có lỗi!', message: "Sai OTP, xin thử lại");
     }
   }
 }

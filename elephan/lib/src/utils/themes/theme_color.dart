@@ -5,7 +5,7 @@ var colorScheme = (BuildContext context) => Theme.of(context).colorScheme;
 class TAppTheme {
   static const lightColorScheme = ColorScheme(
     brightness: Brightness.light,
-    primary: Color.fromARGB(255, 255, 255, 255),
+    primary: Color.fromARGB(255, 0, 0, 0),
     onPrimary: Color(0xFFFFFFFF),
     primaryContainer: Color(0xFFEADDFF),
     onPrimaryContainer: Color(0xFF21005D),

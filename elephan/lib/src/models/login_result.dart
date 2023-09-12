@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 class LoginResult {
-  final String? accessToken;
+  String? accessToken;
   final String? refreshToken;
   final User? info;
 
