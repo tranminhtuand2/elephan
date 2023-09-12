@@ -1,6 +1,7 @@
 import 'package:elephan/src/components/loading.dart';
 import 'package:elephan/src/constants/size.dart';
 import 'package:elephan/src/getx_controller/auth_controller.dart';
+import 'package:elephan/src/screen/sanpham_screen/chitietsanpham.dart';
 import 'package:elephan/src/screen/signin_signup/pagedangnhap/sign_in.dart';
 import 'package:elephan/src/utils/themes/text_theme.dart';
 import 'package:elephan/src/utils/themes/theme_color.dart';
@@ -38,17 +39,18 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
           colorScheme: TAppTheme.darkColorScheme,
           textTheme: TAppTextTheme.darkTextTheme),
-      home: Stack(
-        children: [
-          const LoginScreen(),
-          Obx(() {
-            final authController = Get.find<AuthController>();
-            return authController.isLoading.value
-                ? Loading()
-                : const SizedBox();
-          }),
-        ],
-      ),
+      home: const ChiTietSanPham(),
+    //   Stack(
+    //     children: [
+    //       const LoginScreen(),
+    //       Obx(() {
+    //         final authController = Get.find<AuthController>();
+    //         return authController.isLoading.value
+    //             ? Loading()
+    //             : const SizedBox();
+    //       }),
+    //     ],
+    //   ),
     );
   }
 }
