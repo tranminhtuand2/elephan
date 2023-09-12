@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ChiTietSanPham extends StatefulWidget {
   const ChiTietSanPham({Key? key}) : super(key: key);
@@ -8,7 +9,7 @@ class ChiTietSanPham extends StatefulWidget {
 }
 
 class _ChiTietSanPhamState extends State<ChiTietSanPham> {
-  int count = 0;
+  int count = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -22,12 +23,15 @@ class _ChiTietSanPhamState extends State<ChiTietSanPham> {
           body: Column(
             children: [
               Expanded(
-                child: Column(
-                  children: [
-                    _buildProductImage(),
-                    _buildProductInfo(),
-                    _buildProductDescription(),
-                  ],
+                child: SingleChildScrollView(
+                  physics: const BouncingScrollPhysics(),
+                  child: Column(
+                    children: [
+                      _buildProductImage(),
+                      _buildProductInfo(),
+                      _buildProductDescription(),
+                    ],
+                  ),
                 ),
               ),
               _buildQuantityAndButton(),
@@ -47,13 +51,16 @@ class _ChiTietSanPhamState extends State<ChiTietSanPham> {
           width: double.infinity,
           fit: BoxFit.cover,
         ),
-        const Positioned(
+        Positioned(
           top: 5,
           left: 5,
-          child: Icon(
-            Icons.arrow_circle_left_rounded,
-            size: 50.0,
+          child: IconButton(
+            icon: const Icon(
+              Icons.arrow_circle_left_rounded,
+              size: 50.0,
+            ),
             color: Colors.white,
+            onPressed: () => Get.back(),
           ),
         ),
       ],
@@ -120,6 +127,7 @@ class _ChiTietSanPhamState extends State<ChiTietSanPham> {
 
   Widget _buildQuantityAndButton() {
     return Container(
+      padding: const EdgeInsets.symmetric(vertical: 14),
       decoration: BoxDecoration(
         color: const Color.fromARGB(255, 255, 255, 255),
         boxShadow: [
@@ -153,9 +161,8 @@ class _ChiTietSanPhamState extends State<ChiTietSanPham> {
                       icon: Container(
                         padding: const EdgeInsets.all(5),
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          color: const Color.fromARGB(255, 215, 215, 214)
-                        ),
+                            borderRadius: BorderRadius.circular(5),
+                            color: const Color.fromARGB(255, 215, 215, 214)),
                         child: const Icon(
                           Icons.remove,
                           size: 25,
@@ -180,9 +187,8 @@ class _ChiTietSanPhamState extends State<ChiTietSanPham> {
                       icon: Container(
                         padding: const EdgeInsets.all(5),
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(5),
-                          color: const Color.fromARGB(255, 215, 215, 214)
-                        ),
+                            borderRadius: BorderRadius.circular(5),
+                            color: const Color.fromARGB(255, 215, 215, 214)),
                         child: const Icon(
                           Icons.add_outlined,
                           size: 25,
@@ -196,23 +202,28 @@ class _ChiTietSanPhamState extends State<ChiTietSanPham> {
             ),
             Expanded(
               flex: 7,
-              child: ElevatedButton(
-                onPressed: () {
-                  // Handle button click
-                },
-                style: ElevatedButton.styleFrom(
-                  foregroundColor: Colors.white, backgroundColor: Colors.black, textStyle: const TextStyle(fontSize: 18),
-                  minimumSize: const Size(double.infinity, 60),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8),
+                child: ElevatedButton(
+                  onPressed: () {
+                    // Handle button click
+                  },
+                  style: ElevatedButton.styleFrom(
+                    foregroundColor: Colors.white,
+                    backgroundColor: Colors.black,
+                    textStyle: const TextStyle(fontSize: 18),
+                    minimumSize: const Size(double.infinity, 60),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                  ),
+                  child: const Text(
+                    'Thêm - 35.000d',
+                    style: TextStyle(color: Colors.white),
+                    overflow: TextOverflow.ellipsis,
+                    maxLines: 1,
                   ),
                 ),
-               child: const Text(
-                  'Thêm - 35.000d',
-                  style: TextStyle(color: Colors.white),
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 1,
-                ),       
               ),
             )
           ],

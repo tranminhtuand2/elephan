@@ -8,6 +8,7 @@ import 'package:lottie/lottie.dart';
 
 import '../../../components/listview_grid.dart';
 import '../../../models/category.dart';
+import '../../sanpham_screen/chitietsanpham.dart';
 import 'widgets/app_bar_top.dart';
 import '../../../components/input_search.dart';
 import 'widgets/list_view_category.dart';
@@ -126,6 +127,9 @@ class _PageHomeState extends State<PageHome> {
                     Padding(
                       padding: const EdgeInsets.only(left: 10, right: 10),
                       child: listViewGrid(
+                        onClickTitle: () {
+                          Get.to(() => const ChiTietSanPham());
+                        },
                         title: 'Món siêu ngon',
                         products: productController.products,
                       ),
