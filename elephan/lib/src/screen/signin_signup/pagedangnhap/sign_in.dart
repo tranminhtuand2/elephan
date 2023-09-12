@@ -1,3 +1,4 @@
+import 'package:elephan/src/constants/shared_preferences.dart';
 import 'package:elephan/src/getx_controller/auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:elephan/src/screen/signin_signup/pagequenmatkhau/forgot_password.dart';
@@ -24,6 +25,20 @@ class _LoginScreenState extends State<LoginScreen> {
 
   void checkPhoneAndNavigator() async {
     controller.checkPhoneNumber(phone: _controllerPhone.text);
+  }
+
+  void getInfor() async {
+    final prefre = await SharedPreferencesService.getInstance();
+    var listInfor = await prefre.getInforLogin();
+    if (listInfor.isNotEmpty) {
+      _controllerPhone.text = listInfor[0];
+    }
+  }
+
+  @override
+  void initState() {
+    getInfor();
+    super.initState();
   }
 
   @override
@@ -130,6 +145,20 @@ class _PasswordLoginState extends State<PasswordLogin> {
   final _controllerPassword = TextEditingController();
   var controller = Get.put(AuthController());
 
+  void getInfor() async {
+    final prefre = await SharedPreferencesService.getInstance();
+    var listInfor = await prefre.getInforLogin();
+    if (listInfor.isNotEmpty) {
+      _controllerPassword.text = listInfor[1];
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getInfor();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -181,6 +210,11 @@ class _PasswordLoginState extends State<PasswordLogin> {
                           Theme.of(context).colorScheme.onBackground,
                       onTap: () async {
                         if (_formKey.currentState!.validate()) {
+                          final prefre =
+                              await SharedPreferencesService.getInstance();
+                          prefre.setInforLogin(
+                              [widget.phone ?? '', _controllerPassword.text]);
+
                           controller.signIn(
                             password: _controllerPassword.text,
                             email: widget.email,

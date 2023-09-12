@@ -1,6 +1,11 @@
+import 'dart:developer';
+
 import 'package:elephan/src/models/login_result.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../../../../getx_controller/auth_controller.dart';
 
 Column appBarTop(
     {required BuildContext context, required LoginResult inforUser}) {
@@ -26,6 +31,7 @@ Column appBarTop(
                   ),
                   Text(
                     inforUser.info!.email!.split('@')[0],
+                    // 'asdss',
                     style: Theme.of(context)
                         .textTheme
                         .titleMedium
@@ -42,7 +48,10 @@ Column appBarTop(
                 borderRadius: BorderRadius.circular(18)),
             child: IconButton(
               color: Theme.of(context).colorScheme.onPrimary,
-              onPressed: () {},
+              onPressed: () {
+                Get.put(AuthController()).isLoading.value = true;
+                log("message");
+              },
               icon: const Icon(CupertinoIcons.shopping_cart),
             ),
           ),

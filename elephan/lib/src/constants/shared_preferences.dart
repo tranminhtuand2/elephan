@@ -33,7 +33,15 @@ class SharedPreferencesService {
     await _preferences!.setBool('check_first_install', firstInstall);
   }
 
+  Future<void> setInforLogin(List<String> infor) async {
+    await _preferences!.setStringList('inforLogin', infor);
+  }
+
+  Future<List<String>> getInforLogin() async {
+    return _preferences!.getStringList('inforLogin') ?? [];
+  }
+
   bool getIsFirstInstall() {
-    return _preferences!.getBool('check_first_install') ?? false;
+    return _preferences!.getBool('check_first_install') ?? true;
   }
 }
