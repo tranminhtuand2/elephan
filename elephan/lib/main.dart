@@ -1,7 +1,5 @@
-import 'package:elephan/src/components/loading.dart';
 import 'package:elephan/src/constants/size.dart';
-import 'package:elephan/src/getx_controller/auth_controller.dart';
-import 'package:elephan/src/screen/pagegioithieu/splash_screen/splash_screen.dart';
+import 'package:elephan/src/screen/home_screen/home_screen.dart';
 import 'package:elephan/src/utils/themes/text_theme.dart';
 import 'package:elephan/src/utils/themes/theme_color.dart';
 import 'package:flutter/material.dart';
@@ -39,21 +37,22 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
           colorScheme: TAppTheme.darkColorScheme,
           textTheme: TAppTextTheme.darkTextTheme),
-      home: Builder(
-        builder: (context) {
-          final authController = Get.put(AuthController());
-          return Obx(
-            () {
-              return Stack(
-                children: [
-                  SplashScreen(),
-                  authController.isLoading.value ? Loading() : const SizedBox(),
-                ],
-              );
-            },
-          );
-        },
-      ),
+      // home: Builder(
+      //   builder: (context) {
+      //     final authController = Get.put(AuthController());
+      //     return Obx(
+      //       () {
+      //         return Stack(
+      //           children: [
+      //             SplashScreen(),
+      //             authController.isLoading.value ? Loading() : const SizedBox(),
+      //           ],
+      //         );
+      //       },
+      //     );
+      //   },
+      // ),
+      home: const HomeScreen(),
     );
   }
 }

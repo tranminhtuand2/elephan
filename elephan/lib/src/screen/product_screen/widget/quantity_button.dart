@@ -1,131 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
-class ChiTietSanPham extends StatefulWidget {
-  const ChiTietSanPham({Key? key}) : super(key: key);
-
+class QuanityButtonProduct extends StatefulWidget {
+  const QuanityButtonProduct({super.key});
+     
+  
   @override
-  _ChiTietSanPhamState createState() => _ChiTietSanPhamState();
+  State<QuanityButtonProduct> createState() => _QuanityButtonProductState();
+  
 }
 
-class _ChiTietSanPhamState extends State<ChiTietSanPham> {
-  int count = 1;
-
+class _QuanityButtonProductState extends State<QuanityButtonProduct> {
+   int count = 1;
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        FocusScope.of(context).unfocus();
-      },
-      child: SafeArea(
-        child: Scaffold(
-          resizeToAvoidBottomInset: false,
-          body: Column(
-            children: [
-              Expanded(
-                child: SingleChildScrollView(
-                  physics: const BouncingScrollPhysics(),
-                  child: Column(
-                    children: [
-                      _buildProductImage(),
-                      _buildProductInfo(),
-                      _buildProductDescription(),
-                    ],
-                  ),
-                ),
-              ),
-              _buildQuantityAndButton(),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
 
-  Widget _buildProductImage() {
-    return Stack(
-      alignment: Alignment.center,
-      children: [
-        Image.asset(
-          "assets/images/food.jpg",
-          width: double.infinity,
-          fit: BoxFit.cover,
-        ),
-        Positioned(
-          top: 5,
-          left: 5,
-          child: IconButton(
-            icon: const Icon(
-              Icons.arrow_circle_left_rounded,
-              size: 50.0,
-            ),
-            color: Colors.white,
-            onPressed: () => Get.back(),
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildProductInfo() {
-    return const Padding(
-      padding: EdgeInsets.all(10.0),
-      child: Row(
-        children: [
-          Expanded(
-            flex: 8,
-            child: Text(
-              "Cơm tấm Anh Thy - sườn trứng",
-              style: TextStyle(fontSize: 27, fontWeight: FontWeight.bold),
-            ),
-          ),
-          Expanded(
-            flex: 3,
-            child: Text(
-              "35.000d",
-              style: TextStyle(
-                  fontSize: 25,
-                  fontWeight: FontWeight.w800,
-                  color: Color.fromARGB(255, 50, 50, 50)),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildProductDescription() {
-    bool isFocused = false;
-    return Padding(
-      padding: const EdgeInsets.all(10.0),
-      child: Focus(
-        onFocusChange: (hasFocus) {
-          setState(() {
-            isFocused = hasFocus;
-          });
-        },
-        child: TextFormField(
-          readOnly: isFocused,
-          showCursor: true,
-          decoration: const InputDecoration(
-            prefixIcon: Padding(
-              padding: EdgeInsets.only(right: 15),
-              child: Icon(
-                Icons.sticky_note_2_outlined,
-                size: 35,
-              ),
-            ),
-            hintStyle: TextStyle(fontSize: 15),
-            hintText: 'Bạn có gì muốn nhắn tới nhà hàng không ?',
-            border: InputBorder.none,
-          ),
-          maxLines: 1,
-        ),
-      ),
-    );
-  }
-
-  Widget _buildQuantityAndButton() {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 14),
       decoration: BoxDecoration(
@@ -205,9 +93,7 @@ class _ChiTietSanPhamState extends State<ChiTietSanPham> {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8),
                 child: ElevatedButton(
-                  onPressed: () {
-                    // Handle button click
-                  },
+                  onPressed: () {},
                   style: ElevatedButton.styleFrom(
                     foregroundColor: Colors.white,
                     backgroundColor: Colors.black,
