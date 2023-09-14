@@ -127,9 +127,8 @@ class _PageHomeState extends State<PageHome> {
                     Padding(
                       padding: const EdgeInsets.only(left: 10, right: 10),
                       child: listViewGrid(
-                        onClickTitle: () {
-                          Get.to(() => const ChiTietSanPham());
-                        },
+                        onClickTitle: () =>
+                            Get.to(() => const ChiTietSanPham()),
                         title: 'Món siêu ngon',
                         products: productController.products,
                       ),

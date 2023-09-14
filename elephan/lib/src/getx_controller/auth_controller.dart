@@ -1,3 +1,4 @@
+import 'package:elephan/src/getx_controller/loading_controller.dart';
 import 'package:elephan/src/models/login_result.dart';
 import 'package:elephan/src/screen/home_screen/home_screen.dart';
 import 'package:elephan/src/screen/signin_signup/pagedangky/sign_up.dart';
@@ -11,18 +12,18 @@ import '../screen/signin_signup/pagedangnhap/sign_in.dart';
 import '../screen/signin_signup/pagequenmatkhau/otp_page.dart';
 
 class AuthController extends GetxController {
-  var isLoading = false.obs;
   var login_result = LoginResult().obs;
+  final loadingController = Get.find<LoadingController>();
 
   Future<void> checkPhoneNumber({required String phone}) async {
-    isLoading.value = true;
+    loadingController.showLoading();
     var response = await AuthService.checkPhoneNumber(phone);
     if (response is Success) {
-      isLoading.value = false;
+      loadingController.hideLoading();
 
       Get.to(() => SignUpEmailPage(phoneNumber: phone));
     } else {
-      isLoading.value = false;
+      loadingController.hideLoading();
       Get.to(() => PasswordLogin(phone: phone));
     }
   }
@@ -32,7 +33,7 @@ class AuthController extends GetxController {
     required String email,
     required String password,
   }) async {
-    isLoading.value = true;
+    loadingController.showLoading();
     var response = await AuthService.registerUser(
       email: email,
       phone: phone,
@@ -40,13 +41,13 @@ class AuthController extends GetxController {
     );
     if (response is Success) {
       // print(response.response);
-      isLoading.value = false;
+      loadingController.hideLoading();
       Get.to(() => ForgotPasswordOTPPage(
             valueEmail: email,
           ));
     } else {
       // print(response.response);
-      isLoading.value = false;
+      loadingController.hideLoading();
       showCustomSnackBar(
           type: Type.error,
           title: 'Có lỗi!',
@@ -59,7 +60,7 @@ class AuthController extends GetxController {
     String? email,
     required String password,
   }) async {
-    isLoading.value = true;
+    loadingController.showLoading();
     var response = await AuthService.loginUser(
       email: email,
       phone: phone,
@@ -67,7 +68,7 @@ class AuthController extends GetxController {
     );
     if (response is Success) {
       // print(response.response.data);
-      isLoading.value = false;
+      loadingController.hideLoading();
 
       // Lưu thông tin vào Shared Preferences
       final sharedPrefs = await SharedPreferencesService.getInstance();
@@ -81,7 +82,7 @@ class AuthController extends GetxController {
       Get.offAll(() => const HomeScreen());
     } else {
       print(response.response);
-      isLoading.value = false;
+      loadingController.hideLoading();
       showCustomSnackBar(
           type: Type.error,
           title: 'Có lỗi!',
@@ -93,14 +94,14 @@ class AuthController extends GetxController {
     required String email,
     required int code,
   }) async {
-    isLoading.value = true;
+    loadingController.showLoading();
     var response = await AuthService.activeCodeEmail(
       email: email,
       code: code,
     );
     if (response is Success) {
       print(response.response);
-      isLoading.value = false;
+      loadingController.hideLoading();
       showCustomSnackBar(
           type: Type.success,
           title: 'Thành công',
@@ -110,7 +111,7 @@ class AuthController extends GetxController {
           ));
     } else {
       print(response.response);
-      isLoading.value = false;
+      loadingController.hideLoading();
       showCustomSnackBar(
           type: Type.error, title: 'Có lỗi!', message: "Sai OTP, xin thử lại");
     }

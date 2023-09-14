@@ -1,7 +1,6 @@
 import 'package:elephan/src/constants/shared_preferences.dart';
 import 'package:elephan/src/getx_controller/auth_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:elephan/src/screen/signin_signup/pagequenmatkhau/forgot_password.dart';
 import 'package:get/get.dart';
 
 import '../../../components/input_field.dart';
@@ -9,6 +8,7 @@ import '../../../components/my_button.dart';
 import '../../../constants/text_string.dart';
 
 import '../../../utils/themes/text_theme.dart';
+import '../pagequenmatkhau/forgot_password.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -233,7 +233,9 @@ class _PasswordLoginState extends State<PasswordLogin> {
                   ),
                   Center(
                     child: TextButton(
-                      onPressed: () => Get.to(() => const ForgotPassword()),
+                      onPressed: () {
+                        Get.to(() => const ForgotPassword());
+                      },
                       child: Text(
                         'Quên mật khẩu?',
                         style: TextStyle(

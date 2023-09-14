@@ -74,7 +74,7 @@ class _InputSearchState extends State<InputSearch> {
             // contentPadding: const EdgeInsets.only(left: 20),
             focusedBorder: const OutlineInputBorder(
               borderSide: BorderSide.none,
-              borderRadius: BorderRadius.all(Radius.circular(8)),
+              borderRadius: BorderRadius.all(Radius.circular(12)),
             ),
             enabledBorder: const OutlineInputBorder(
               borderSide: BorderSide.none,

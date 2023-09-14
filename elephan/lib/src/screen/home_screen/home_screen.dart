@@ -1,5 +1,6 @@
 import 'package:elephan/src/getx_controller/page_controller.dart';
 import 'package:elephan/src/screen/home_screen/page_home/page_home.dart';
+import 'package:elephan/src/screen/home_screen/page_search/search_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -27,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
           // controller: pageController,
           children: const [
             PageHome(),
-            Text('Page 2'),
+            SearchPage(),
             Text('Page 3'),
             Text('Page 4'),
             //
@@ -74,8 +75,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     text: 'Tìm kiếm',
                   ),
                   GButton(
-                    icon: CupertinoIcons.layers,
-                    text: 'Cửa hàng',
+                    icon: CupertinoIcons.shopping_cart,
+                    text: 'Giỏ hàng',
                   ),
                   GButton(
                     //
