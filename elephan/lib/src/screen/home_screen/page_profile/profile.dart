@@ -1,5 +1,3 @@
-// ignore_for_file: non_constant_identifier_names
-
 import 'package:elephan/src/screen/home_screen/page_profile/widget_profile/avatar_name.dart';
 import 'package:elephan/src/screen/home_screen/page_profile/widget_profile/order_favourite_address.dart';
 import 'package:elephan/src/screen/home_screen/page_profile/widget_profile/orther_funtiones.dart';
@@ -14,39 +12,21 @@ class Profile extends StatefulWidget {
 }
 
 class _ProfileState extends State<Profile> {
-  int count = 1;
-
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        FocusScope.of(context).unfocus();
-      },
-      child: SafeArea(
-        child: Scaffold(
-          backgroundColor: const Color.fromARGB(255, 255, 255, 255),
-          resizeToAvoidBottomInset: false,
-          body: Column(
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      body: Column(
+        children: [
+          Column(
             children: [
-              Column(
-                children: [
-                  avatarAndNameProfile(context),
-                  orderFavouriteAddressProfile(),
-                  SizedBox(
-                    height: 20,
-                    child: Container(
-                        color: const Color.fromARGB(255, 230, 230, 230)),
-                  ),
-                  otherFunctionsProfile(),
-                ],
-              ),
-              Expanded(
-                child:
-                    Container(color: const Color.fromARGB(255, 230, 230, 230)),
-              ),
+              avatarAndNameProfile(context),
+              orderFavouriteAddressProfile(),
+              const SizedBox(height: 20),
+              otherFunctionsProfile(),
             ],
           ),
-        ),
+        ],
       ),
     );
   }

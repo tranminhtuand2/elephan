@@ -1,51 +1,65 @@
- 
-  import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
 Widget orderFavouriteAddressProfile() {
-    return Container(  
-      decoration: const BoxDecoration(
-        border: Border(top: BorderSide(color: Color.fromARGB(255, 108, 108, 108), width: 0.3), bottom: BorderSide(color: Color.fromARGB(255, 108, 108, 108), width: 0.4))
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
+  return Column(
+    children: [
+      const Divider(),
+      Padding(
+        padding: const EdgeInsets.symmetric(vertical: 10),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             InkWell(
-              onTap: () {
-          
-              },
+              onTap: () {},
               child: Column(
                 children: [
-                  Image.asset("assets/images/order.png", width: 70,),
-                  const Text("Đơn hàng", style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),)
+                  Image.asset(
+                    "assets/images/order.png",
+                    width: 60,
+                  ),
+                  const SizedBox(height: 6),
+                  const Text(
+                    "Đơn hàng",
+                    style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                  )
                 ],
               ),
             ),
             InkWell(
-              onTap: () {
-          
-              },
+              onTap: () {},
               child: Column(
                 children: [
-                  Image.asset("assets/images/favourite.png", width: 70,),
-                  const Text("Yêu thích", style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),)
+                  Image.asset(
+                    "assets/images/favourite.png",
+                    width: 60,
+                  ),
+                  const SizedBox(height: 6),
+                  const Text(
+                    "Yêu thích",
+                    style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                  )
                 ],
               ),
             ),
             InkWell(
-              onTap: () {
-          
-              },
+              onTap: () {},
               child: Column(
                 children: [
-                  Image.asset("assets/images/address.png", width: 70,),
-                  const Text("Địa chỉ", style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),)
+                  Image.asset(
+                    "assets/images/address.png",
+                    width: 60,
+                  ),
+                  const SizedBox(height: 6),
+                  const Text(
+                    "Địa chỉ",
+                    style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                  )
                 ],
               ),
             ),
           ],
         ),
       ),
-    );
-  }
+    ],
+  );
+}

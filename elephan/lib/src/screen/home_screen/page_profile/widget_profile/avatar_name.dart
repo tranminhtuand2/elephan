@@ -8,12 +8,10 @@ import '../profile_detail.dart';
 Widget avatarAndNameProfile(BuildContext context) {
   return InkWell(
     onTap: () {
-      Get.to(() => 
-        const ProfileDetail()
-      );
+      Get.to(() => const ProfileDetail());
     },
     child: const Padding(
-      padding: EdgeInsets.only(top: 35, left: 20,bottom: 10,right: 5),
+      padding: EdgeInsets.only(left: 20, right: 20, top: 30, bottom: 10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
@@ -25,7 +23,7 @@ Widget avatarAndNameProfile(BuildContext context) {
                   radius: 40,
                 ),
                 Padding(
-                  padding: EdgeInsets.only(left: 20,top: 3),
+                  padding: EdgeInsets.only(left: 20, top: 3),
                   child: Text(
                     "Lê Hoài Nam",
                     style: TextStyle(fontSize: 23, fontWeight: FontWeight.w700),
@@ -34,7 +32,10 @@ Widget avatarAndNameProfile(BuildContext context) {
               ],
             ),
           ),
-          Icon(Icons.keyboard_arrow_right_outlined, size: 34,)
+          Icon(
+            Icons.keyboard_arrow_right_outlined,
+            size: 34,
+          )
         ],
       ),
     ),

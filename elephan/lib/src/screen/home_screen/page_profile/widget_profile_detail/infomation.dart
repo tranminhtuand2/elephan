@@ -186,31 +186,37 @@ class _InformationProfileDetailState extends State<InformationProfileDetail> {
             label: 'Tên',
             index: 0,
           ),
+          const Divider(),
           _buildTextField(
             controller: _phoneController,
             label: 'Số điện thoại',
             index: 1,
           ),
+          const Divider(),
           _buildTextField(
             controller: _emailController,
             label: 'Địa chỉ Email',
             index: 2,
           ),
+          const Divider(),
           _buildTextField(
             controller: _sexController,
             label: 'Giới tính',
             index: 3,
           ),
+          const Divider(),
           _buildTextField(
             controller: _dateOfBirthController,
             label: 'Ngày sinh',
             index: 4,
           ),
+          const Divider(),
           _buildTextField(
             controller: _jobController,
             label: 'Nghề nghiệp',
             index: 5,
           ),
+          const Divider(),
         ],
       ),
     );
