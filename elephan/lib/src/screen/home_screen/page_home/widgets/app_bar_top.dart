@@ -1,11 +1,8 @@
-import 'dart:developer';
-
+import 'package:elephan/src/getx_controller/loading_controller.dart';
 import 'package:elephan/src/models/login_result.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../../../../getx_controller/auth_controller.dart';
 
 Column appBarTop(
     {required BuildContext context, required LoginResult inforUser}) {
@@ -49,8 +46,7 @@ Column appBarTop(
             child: IconButton(
               color: Theme.of(context).colorScheme.onPrimary,
               onPressed: () {
-                Get.put(AuthController()).isLoading.value = true;
-                log("message");
+                Get.find<LoadingController>().showLoading();
               },
               icon: const Icon(CupertinoIcons.shopping_cart),
             ),

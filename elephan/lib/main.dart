@@ -1,5 +1,7 @@
+import 'package:elephan/src/components/loading.dart';
 import 'package:elephan/src/constants/size.dart';
-import 'package:elephan/src/screen/home_screen/home_screen.dart';
+import 'package:elephan/src/getx_controller/loading_controller.dart';
+import 'package:elephan/src/screen/signin_signup/pagedangnhap/sign_in.dart';
 import 'package:elephan/src/utils/themes/text_theme.dart';
 import 'package:elephan/src/utils/themes/theme_color.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +11,9 @@ import 'package:google_fonts/google_fonts.dart';
 // import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  Get.put(LoadingController());
+
   await dotenv.load(fileName: ".env");
   runApp(
     const MyApp(),
@@ -22,10 +27,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
+    final loadingController = Get.find<LoadingController>();
 
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      defaultTransition: Transition.leftToRightWithFade,
+      defaultTransition: Transition.cupertino,
       transitionDuration: const Duration(milliseconds: 500),
       theme: ThemeData(
           fontFamily: GoogleFonts.manrope().fontFamily,
@@ -37,22 +43,16 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
           colorScheme: TAppTheme.darkColorScheme,
           textTheme: TAppTextTheme.darkTextTheme),
-      // home: Builder(
-      //   builder: (context) {
-      //     final authController = Get.put(AuthController());
-      //     return Obx(
-      //       () {
-      //         return Stack(
-      //           children: [
-      //             SplashScreen(),
-      //             authController.isLoading.value ? Loading() : const SizedBox(),
-      //           ],
-      //         );
-      //       },
-      //     );
-      //   },
-      // ),
-      home: const HomeScreen(),
+      home: Scaffold(
+        body: Obx(
+          () => Stack(
+            children: [
+              const LoginScreen(),
+              if (loadingController.isLoading.value) Loading(),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
